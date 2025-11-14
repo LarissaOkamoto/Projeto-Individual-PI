@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <h2>Recuperação de Senha</h2>
+        <p>Informe o e-mail para o qual deseja redefinir a sua senha</p>
+        <input type="text" id="input_email">
+        <button onclick="email()" class="button_email">Enviar</button>
+        
+    </div>
+    
+</body>
+</html>
+
+<script>
+
+    function email(){
+        var email = input_email.value;
+        var validacao = email;
+
+        if(email == validacao){
+            alert(`
+                <h3>O link para redefinir a senha foi enviado por e-mail!</h3><br/>
+                Verifiquei a sua caixa de entrada.
+            `)
+        } else {
+            alert(`
+                <h3>E-mail inválido</h3><br/>
+                Verifiquei se o e-mail contém (@, .com/.com.br).
+            `)
+        }
+        
+    }
+</script>
