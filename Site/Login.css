@@ -4,7 +4,10 @@
 }*/
 
 body{
-    font-family: "Work Sans", sans-serif;
+    font-family: "Elms Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
 h1, 

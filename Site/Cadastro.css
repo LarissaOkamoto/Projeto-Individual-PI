@@ -4,7 +4,10 @@
 }*/
 
 body{
-    font-family: "Work Sans", sans-serif;
+    font-family: "Elms Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
 h1, 
@@ -90,7 +93,84 @@ h3{
 /* FIM HEADER*/
 
 
+/*INICIO CADASTRO*/
 
+.cadastro_body{
+    display: flex;
+    flex-direction:row;
+    gap: 100px;
+    align-items:center;
+}
+
+.cadastro_body p{
+    font-family: "Playfair Display", serif;
+    font-size: 18px;
+    font-weight: bold;
+    color:black;
+    margin-block-end: 5px;
+    margin-block-start: 10px;
+}
+
+.cadastro_body h1{
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    color:#8a6344;
+}
+
+.img-cadastro{
+    width: 900px;
+}
+
+.cadastro{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.numero_complemento,
+.uf_CEP{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+
+.input{
+    display: flex;
+    width: 350px;
+    height: 40px;
+    border-radius: 14px;
+    border-style: solid;
+    border-color:#b99573;
+}
+
+.numero .input,
+.complemento .input,
+.uf .input,
+.CEP .input{
+    display: flex;
+    width: 170px;
+    height: 40px;
+    border-radius: 14px;
+    border-style: solid;
+    border-color:#b99573;
+}
+
+.button_cadastrar{
+    display: flex;
+    width: 360px;
+    height: 50px;
+    color: white;
+    background-color: #b99573;
+    border-radius: 14px;
+    border-style: solid;
+    border-color:#b99573;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+/*FIM CADASTRO*/
 
 
 

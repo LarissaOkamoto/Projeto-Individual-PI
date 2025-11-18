@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="NovaSenha.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 <body>
         <div class="header"></div>
@@ -41,12 +44,15 @@
         </ul>
     </div>
 
-    <div class="box">
+    <div class ="box">
+        <img src="Imagens\img-nova_senha.png" class="img-nova_senha">
+        <div class="nova_senha">
         <h2>Recuperação de Senha</h2>
         <p>Informe o e-mail para o qual deseja redefinir a sua senha</p>
-        <input type="text" id="input_email">
+        <input type="text" id="input_email" class="input_email">
+        <br/>
         <button onclick="email()" class="button_email">Enviar</button>
-        
+        </div>
     </div>
 
 
@@ -103,12 +109,14 @@
 
         if(email == validacao){
             alert(`
-                <h3>O link para redefinir a senha foi enviado por e-mail!</h3><br/>
+                O link para redefinir a senha foi enviado por e-mail!
+                
                 Verifiquei a sua caixa de entrada.
             `)
         } else {
-            alert(`
-                <h3>E-mail inválido</h3><br/>
+            alert(` 
+                E-mail inválido
+
                 Verifiquei se o e-mail contém (@, .com/.com.br).
             `)
         }

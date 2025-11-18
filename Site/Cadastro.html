@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="Cadastro.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="header"></div>
@@ -42,41 +45,55 @@
     </div>
 
     <div class="cadastro_body">
-        <img src="" class="img-cadastro">
+        <img src="Imagens\img-album.png" class="img-cadastro">
         <div class="cadastro">
-            <h2>Nome:</h2><br/>
-            <input type="text" id="input_nome" class="input">
-            <br/><br/>
-            <h2>Sobrenome:</h2><br/>
-            <input type="text" id="input_sobrenome" class="input">
-            <br/><br/>
-            <h2>E-mail:</h2><br/>
-            <input type="text" id="input_email" class="input">
-            <br/><br/>
-            <h2>Telefone:</h2><br/>
-            <input type="text" id="input_telefone" class="input">
-            <br/><br/>
-            <h2>Rua:</h2><br/>
-            <input type="text" id="input_rua" class="input">
-            <br/><br/>
-            <h2>Número:</h2><br/>
-            <input type="text" id="input_numero" class="input">
-            <br/><br/>
-            <h2>Complemento:</h2><br/>
-            <input type="text" id="input_complemento" class="input">
-            <br/><br/>
-            <h2>Bairro:</h2><br/>
-            <input type="text" id="input_bairro" class="input">
-            <br/><br/>
-            <h2>Cidade:</h2><br/>
-            <input type="text" id="input_cidade" class="input">
-            <br/><br/>
-            <h2>UF:</h2><br/>
-            <input type="text" id="input_uf" class="input">
-            <br/><br/>
-            <h2>CEP:</h2><br/>
-            <input type="text" id="input_cep" class="input">
-            <br/><br/>
+            <h1>Cadastro</h1>
+            <p>Nome:</p>
+            <input type="text" id="input_nome" class="input" placeholder="Digite o seu nome">
+            <br/>
+            <p>Sobrenome:</p>
+            <input type="text" id="input_sobrenome" class="input" placeholder="Digite o seu sobrenome">
+            <br/>
+            <p>E-mail:</p>
+            <input type="text" id="input_email" class="input" placeholder="Digite o seu e-mail">
+            <br/>
+            <p>Telefone:</p>
+            <input type="text" id="input_telefone" class="input" placeholder="Digite o seu telefone">
+            <br/>
+            <p>Rua:</p>
+            <input type="text" id="input_rua" class="input" placeholder="Digite o seu endereço">
+            <br/>
+            <div class="numero_complemento">
+            <div class="numero">
+            <p>Número:</p>
+            <input type="text" id="input_numero" class="input" placeholder="Digite o número">
+            <br/>
+            </div>
+            <div class="complemento">
+            <p>Complemento:</p>
+            <input type="text" id="input_complemento" class="input" placeholder="Digite o complemento">
+            <br/>
+            </div>
+            </div>
+            <p>Bairro:</p>
+            <input type="text" id="input_bairro" class="input" placeholder="Digite o seu bairro">
+            <br/>
+            <p>Cidade:</p>
+            <input type="text" id="input_cidade" class="input" placeholder="Digite a sua cidade">
+            <br/>
+            <div class="uf_CEP">
+            <div class="uf">
+            <p>UF:</p>
+            <input type="text" id="input_uf" class="input" placeholder="Digite o seu estado">
+            <br/>
+            </div>
+            <div class="CEP">
+            <p>CEP:</p>
+            <input type="text" id="input_cep" class="input" placeholder="Digite o seu CEP">
+            <br/>
+            </div>
+            </div>
+            <button onclick="cadastrar()" class="button_cadastrar">Cadastrar</button>
         </div>
     </div>
 
@@ -125,3 +142,10 @@
     
 </body>
 </html>
+
+<script>
+    
+    function cadastrar(){
+
+    }
+</script>

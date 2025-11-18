@@ -4,7 +4,10 @@
 }*/
 
 body{
-    font-family: "Work Sans", sans-serif;
+    font-family: "Elms Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
 h1, 
@@ -89,7 +92,24 @@ h3{
 }
 /* FIM HEADER*/
 
+/*INICIO DUVIDAS*/
+.faq{
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+}
 
+.img-faq{
+    display: flex;
+    width: 600px;
+}
+
+.texto_faq{
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+}
+/* FIM DUVIDAS*/
 
 
 /* INÍCIO FOOTER*/
