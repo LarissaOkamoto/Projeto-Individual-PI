@@ -45,7 +45,7 @@ h3{
     gap: 50px;
 }
 
-.navbar .MonteOSeu{
+.navbar .HomePage{
     background-color: #b99573;
     width: 110px;
     height: 40px;
@@ -93,52 +93,33 @@ h3{
 /* FIM HEADER*/
 
 
-/*INICIO MONTE O SEU*/
-
-.quiz{
+/* INICIO QUIZ*/
+.conteudo_quiz{
     display: flex;
     flex-direction: row;
-    gap: 90px;
-}
-
-.texto_questionario{
-    display: flex;
-    flex-direction:column;
-    width: 400px;
-    list-style: none;
-}
-
-.img-quiz{
-    display:flex;
-    width: 850px;
-}
-
-.exemplo_modelos{
-    display: flex;
-    flex-direction: row;
-    gap: 80px;
+    align-items: center;
     justify-content: center;
+    align-content: center;
+    gap: 100px;
 }
 
-.livro,
-.scrapbook,
-.photobook{
+.img-fundo{
     display: flex;
-    flex-direction: column;
-    width: 400px;
+    width: 600px;
+    justify-content: flex-start;
 }
 
-.img-livro, 
-.img-scrapbook,
-.img-photobook{
+.pontuacao_jogo{
     display: flex;
-    border-radius: 14px;
-    width: 400px;
+    background-color: white;
+    width: 800px;
+    justify-content: center;
+    align-content: center;
 }
 
-.button_questionario{
+.iniciar_quiz{
     display: flex;
-    width: 400px;
+    width: 360px;
     height: 50px;
     color: white;
     background-color: #b99573;
@@ -149,17 +130,56 @@ h3{
     align-items: center;
     font-size: 16px;
     font-family: "Elms Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
 }
 
-.texto_questionario a{
-    text-decoration: none;
+.jogo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
+.opcoes_quiz{
+    display: flex;
+    flex-direction: column;
+}
 
-/*FIM MONTE O SEU*/
+.pergunta{
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+}
+
+.buttons_quiz{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.button_submeter,
+.button_proximo,
+.button_finalizar,
+.button_tentar_novamente{
+    display: flex;
+    width: 150px;
+    height: 40px;
+    color: white;
+    background-color: #b99573;
+    border-radius: 14px;
+    border-style: solid;
+    border-color:#b99573;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-family: "Elms Sans", sans-serif;
+}
+
+.img-livro,
+.img-scrapbook,
+.img-photobook{
+    width: 400px;
+}
+
+/*FIM QUIZ*/
+
 
 
 
@@ -227,3 +247,5 @@ h3{
     justify-content: center;
 }
 /*FIM FOOTER*/
+
+

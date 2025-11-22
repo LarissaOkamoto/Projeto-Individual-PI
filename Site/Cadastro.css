@@ -104,7 +104,7 @@ h3{
 
 .cadastro_body p{
     font-family: "Playfair Display", serif;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
     color:black;
     margin-block-end: 5px;
@@ -118,13 +118,13 @@ h3{
 }
 
 .img-cadastro{
-    width: 900px;
+    width: 800px;
 }
 
 .cadastro{
     display:flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .numero_complemento,

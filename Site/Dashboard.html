@@ -4,89 +4,226 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="Duvidas.css">
+    <link rel="stylesheet" href="Dashboard.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-    <div class="header"></div>
-    <div class="container">
+<body onload="obterDados()">
+
+<div class="body_dashboard">
+    <div class="barra_lateral">
         <ul class="navbar">
-            <div class="navbar_esquerda">
-            <li>
-                <a href="Index.html" class="HomePage">Início</a>
-            </li>
-            <li>
-                <a href="SobreNos.html" class="SobreNos">Sobre</a>
-            </li>
-            <li>
-                <a href="MonteOSeu.html" class="Monte o seu">Monte o seu</a>
-            </li>
+        <div class="navbar_topo">
+        <img src="Imagens\img-logo3.png" class="img-logo">
+        <div class="login">
+            <img src="" class="img-login">
+            <p>Bem vindo(a)!</p>
+        </div>
+        <li>
+            <a href="Dashboard.html" class="button_dashboard">Dashboard</a>
+        </li>
+        <li>
+            <a href="Atividades.html" class="button_atividades">Atividades</a>
+        </li>
+        <li>
+            <div class="button_sair" onclick="window.location.href='Index.html';">
+            <img src="Imagens\img-exit.png" class="img-exit">
+            <a href="Index.html" class="Login">Saír</a>
             </div>
-            <div class="navbar_central">
-            <img src="Imagens\img-logo3.png" class="img-logo3">
-            </div>
-            <div class="navbar_direita">
-            <li>
-                <a href="Duvidas.html" class="Duvidas">Dúvidas</a>
-            </li>
-            <li>
-                <a href="Contato.html" class="Contato">Contato</a>
-            </li>
-            <li>
-                <div class="button_login" onclick="window.location.href='Index.html';">
-                <img src="Imagens\img-exit.png" class="img-exit">
-                <a href="Index.html" class="Login">Saír</a>
-                </div>
-            </li>
-            </div>
+        </li>
+        </div>
+        <div class="contatos">
+            <b>Fale Conosco</b>
+            <br/>
+            <img src="Imagens\img-telefone.png" class="img-telefone">
+            <b>Telefone:</b> +55 11 3000-0000
+            <br/>
+            <img src="Imagens\img-email.png" class="img-email">
+            <b>E-mail:</b> umui@outlook.com
+            <br/>
+            <img src="Imagens\img-instagram.png" class="img-instagram">
+            <b>Instagram:</b> @Umui.Project
+        </div>
         </ul>
     </div>
 
-
-
-    <hr class="divider">
-    <div class="footer">
-        <div class="footer_body">
-        <div class="contatos">
-            <h2>Fale Conosco</h2>
-            <img src="" class="img-telefone">
-            <p><b>Telefone:</b> +55 11 3000-0000</p>
-            <img src="" class="img-email">
-            <p><b>E-mail:</b> umui@outlook.com</p>
-            <img src="" class="img-instagram">
-            <p><b>Instagram:</b> @Umui.Project</p>
+    <div class="dashboard">
+        <img src="Imagens\img-header_dashboard.png" class="img-header_dashboard">
+        <div class="explicacao">
+            <h2>Olá, ${nome}, vamos começar a construir uma memória especial?</h2>
+            Este é um espaço para eternizar histórias, homenagens e lembranças.
         </div>
+        <br/>
+        <hr class="divider">
+        <div class="inicie_projeto">
 
-        <div class="ajuda">
-            <h2>Ajuda</h2>
-            <p>FAQ</p>
-            <p>Garantias</p>
-        </div>
-    
-        <div class="dados_empresa">
-            <h2>Umui Project .Ltda</h2>
-            <p>Somos uma marca autoral que eternaliza pessoas, memórias e histórias com muito carinho e amor, por meio de um registro físico.
-            <br/>
-            <p><b>CNPJ:</b> 11.111.111/0001-11</p>
-            <p>Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP, 01414-001</p>
-        </div>
+            <div class="continuar_projeto">
+            <h3>Continuar o projeto</h3>
+            <div class="body_atividades">
+            <div class="atividades_1a3">
+            <li>
+                <div class="button_atividade_individual" onclick="window.location.href='Atividades.html';">
+                <img src="Imagens\img-atividade1.png" class="img-atividade1">
+                <a href="Atividades.html" class="button_atividades">Atividade 1</a>
+                </div>
+            </li>
+            <li>
+                <div class="button_atividade_individual" onclick="window.location.href='Atividades.html';">
+                <img src="Imagens\img-atividade2.png" class="img-atividade2">
+                <a href="Atividades.html" class="button_atividades">Atividade 2</a>
+                </div>
+            </li>
+            <li>
+                <div class="button_atividade_individual" onclick="window.location.href='Atividades.html';">
+                <img src="Imagens\img-atividade3.png" class="img-atividade3">
+                <a href="Atividades.html" class="button_atividades">Atividade 3</a>
+                </div>
+            </li>
+            </div>
+            <div class="atividades_4a6">
+            <li>
+                <div class="button_atividade_individual" onclick="window.location.href='Atividades.html';">
+                <img src="Imagens\img-atividade4.png" class="img-atividade4">
+                <a href="Atividades.html" class="button_atividades">Atividade 4</a>
+                </div>
+            </li>
+            <li>
+                <div class="button_atividade_individual" onclick="window.location.href='Atividades.html';">
+                <img src="Imagens\img-atividade5.png" class="img-atividade5">
+                <a href="Atividades.html" class="button_atividades">Atividade 5</a>
+                </div>
+            </li>
+            <li>
+                <div class="button_atividade_individual" onclick="window.location.href='Atividades.html';">
+                <img src="Imagens\img-atividade6.png" class="img-atividade6">
+                <a href="Atividades.html" class="button_atividades">Atividade 6</a>
+                </div>
+            </li>
+            </div>
+            </div>
+            </div>
+
+            <div class="novo_projeto">
+                <h3>Iniciar um novo projeto</h3>
+                Monte um novo projeto para uma pessoa especial!
+                <br/>
+                <br/>
+                <img src="Imagens\img-album6.png" class="img-novo_projeto">
+                <br/>
+                <br/>
+                <li>
+                <a href="" class="button_novo_projeto">Inicie o seu novo projeto!</a>
+                </li>
+            </div>
+
         </div>
         <hr class="divider">
-        <div class="footer_botton">
-        <div class="politicas">
-            <div class="button_politicas">
-            <p>Política de Privacidade</p>
-            <p>Termos & Condições</p>
-            <p>Segurança</p>
+        <div class="dados_andamento">
+            <h2>Acompanhe o seu projeto ...</h2>
+            <div class="andamento">
+                <img src="Imagens\img-album.png" class="img-album">
+                <div class="metricas_grafico">
+                <div class="metricas">
+                    <div class="kpi_andamento">
+                    % de conclusão total
+                    <div id="div_mensagem"></div>
+                    </div>
+                </div>
+                <div class="grafico">
+                    Porcentagem de progresso %
+                    <canvas id="barra"></canvas>
+                </div>
+                </div>
             </div>
-            <div class="texto_politicas">
-            <p>Copyright © 2025 Umui, Inc. All rights reserved.</p>
-            </div>
-        </div>
         </div>
     </div>
+</div>
     
 </body>
 </html>
+
+<script>
+    function obterDados(){
+    // fetch('/obterDados')
+  // .then(function(response){
+  //   return response.json();
+  // })
+  // .then(function(data){
+  //   plotarGraficoBarra(data);
+  // })
+  // .catch(function(err){
+  //   console.log(err);
+  // })
+
+
+    var dados = [{
+    Atividade:'Linha da Vida',
+    Andamento: 80
+  },
+  {
+    Atividade:'Depoimentos',
+    Andamento: 50
+  },
+  {
+    Atividade:'A história em objetos',
+    Andamento: 20
+  },
+  {
+    Atividade:'A origem',
+    Andamento: 30
+  },
+  {
+    Atividade:'Família & amigos',
+    Andamento: 40
+  },
+  {
+    Atividade:'O legado',
+    Andamento: 60
+  }]
+
+  plotarGraficoBarra(dados)
+
+  var totalSoma = 80+50+20+30+40+60;
+  var porcentagem = (totalSoma/6).toFixed(0);
+
+    div_mensagem.innerHTML = `${porcentagem}`;
+}
+
+
+function plotarGraficoBarra(dados){
+
+  var Atividades = [];
+  var andamento = [];
+
+  // Preenchendo os arrays com os dados
+  for(var i = 0; i < dados.length; i++){
+    Atividades.push(dados[i].Atividades);
+    Andamento.push(dados[i].Andamento);
+  }
+
+  // Capturando o elemento canvas pelo id 
+  var ctx = document.getElementById('barra').getContext('2d');
+  // Criando o gráfico de barra usando o Chart.js
+  var myChart = new Chart(ctx, {
+      type: 'bar', // Tipo de gráfico: barra
+      data: { // Dados para o gráfico
+          labels: Atividades, // Rótulos no eixo X
+          datasets: [{
+              label: 'Andamento', // Nome do conjunto de dados
+              data: Andamento, // Dados dos votos
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)', // Cor de fundo das barras
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)', // Cor da borda das barras
+              ],
+              borderWidth: 1 // Largura da borda das barras
+          }]
+      },
+  });
+}
+
+    
+</script>
