@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Cadastro.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script src="public/js/sessao.js"></script>
+
+</head>
+<body>
+    <div class="header"></div>
+    <div class="container">
+        <ul class="navbar">
+            <div class="navbar_esquerda">
+            <li>
+                <a href="Index.html" class="HomePage">Início</a>
+            </li>
+            <li>
+                <a href="SobreNos.html" class="SobreNos">Sobre</a>
+            </li>
+            <li>
+                <a href="MonteOSeu.html" class="Monte o seu">Monte o seu</a>
+            </li>
+            </div>
+            <div class="navbar_central">
+            <img src="Imagens\img-logo3.png" class="img-logo3">
+            </div>
+            <div class="navbar_direita">
+            <li>
+                <a href="Duvidas.html" class="Duvidas">Dúvidas</a>
+            </li>
+            <li>
+                <a href="Contato.html" class="Contato">Contato</a>
+            </li>
+            <li>
+                <div class="button_login" onclick="window.location.href='Login.html';">
+                <img src="Imagens\img-login.png" class="img-login">
+                <a href="Login.html" class="Login">Login</a>
+                </div>
+            </li>
+            </div>
+        </ul>
+    </div>
+
+    <div class="cadastro_body">
+        <img src="Imagens\img-album.png" class="img-cadastro">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
+        <div class="cadastro">
+            <h1>Cadastro</h1>
+            <p>Nome:</p>
+            <input type="text" id="input_nome" class="input" placeholder="Digite o seu nome">
+            <p>Sobrenome:</p>
+            <input type="text" id="input_sobrenome" class="input" placeholder="Digite o seu sobrenome">
+            <p>E-mail:</p>
+            <input type="text" id="input_email" class="input" placeholder="Digite o seu e-mail">
+            <p>Senha:</p>
+            <input type="password" id="input_senha" class="input" placeholder="Digite a sua senha">
+            <p>Confirme a sua senha:</p>
+            <input type="password" id="input_confirme_senha" class="input" placeholder="Digite a mesma senha">
+            <p>Telefone:</p>
+            <input type="number" id="input_telefone" class="input" placeholder="Digite o seu telefone">
+            <p>Rua:</p>
+            <input type="text" id="input_rua" class="input" placeholder="Digite o seu endereço">
+            <div class="numero_complemento">
+            <div class="numero">
+            <p>Número:</p>
+            <input type="number" id="input_numero" class="input" placeholder="Digite o número">
+            </div>
+            <div class="complemento">
+            <p>Complemento:</p>
+            <input type="text" id="input_complemento" class="input" placeholder="Digite o complemento">
+            </div>
+            </div>
+            <p>Bairro:</p>
+            <input type="text" id="input_bairro" class="input" placeholder="Digite o seu bairro">
+            <p>Cidade:</p>
+            <input type="text" id="input_cidade" class="input" placeholder="Digite a sua cidade">
+            <div class="uf_CEP">
+            <div class="uf">
+            <p>UF:</p>
+            <input type="text" id="input_uf" class="input" maxlength="2" placeholder="Digite o seu estado">
+            </div>
+            <div class="CEP">
+            <p>CEP:</p>
+            <input type= "number" id="input_cep" class="input" placeholder="Digite o seu CEP">
+            </div>
+            </div>
+            <button onclick="cadastrar()" class="button_cadastrar">Cadastrar</button>
+            <div id="div_aguardar" class="loading-div">
+                <img src="Imagens/circle-loading.gif" id="loading-gif" />
+            </div>
+            <div id="div_erros_login"></div>
+        </div>
+    </div>
+
+
+    <hr class="divider">
+    <div class="footer">
+        <div class="footer_body">
+        <div class="contatos">
+            <h2>Fale Conosco</h2>
+            <img src="" class="img-telefone">
+            <p><b>Telefone:</b> +55 11 3000-0000</p>
+            <img src="" class="img-email">
+            <p><b>E-mail:</b> umui@outlook.com</p>
+            <img src="" class="img-instagram">
+            <p><b>Instagram:</b> @Umui.Project</p>
+        </div>
+
+        <div class="ajuda">
+            <h2>Ajuda</h2>
+            <p>FAQ</p>
+            <p>Garantias</p>
+        </div>
+    
+        <div class="dados_empresa">
+            <h2>Umui Project .Ltda</h2>
+            <p>Somos uma marca autoral que eternaliza pessoas, memórias e histórias com muito carinho e amor, por meio de um registro físico.
+            <br/>
+            <p><b>CNPJ:</b> 11.111.111/0001-11</p>
+            <p>Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP, 01414-001</p>
+        </div>
+        </div>
+        <hr class="divider">
+        <div class="footer_botton">
+        <div class="politicas">
+            <div class="button_politicas">
+            <p>Política de Privacidade</p>
+            <p>Termos & Condições</p>
+            <p>Segurança</p>
+            </div>
+            <div class="texto_politicas">
+            <p>Copyright © 2025 Umui, Inc. All rights reserved.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script>
+
+  // Array para armazenar empresas cadastradas para validação de código de ativação 
+  let listaDeUsuariosCadastrados = [];
+
+  function cadastrar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = input_nome.value;
+    var sobrenomeVar = input_sobrenome.value;
+    var emailVar = input_email.value;
+    var senhaVar = input_senha.value;
+    var confirmacaoSenhaVar = input_confirme_senha.value;
+    var telefoneVar = input_telefone.value;
+    var ruaVar = input_rua.value;
+    var numeroVar = input_numero.value;
+    var complementoVar = input_complemento.value;
+    var bairroVar = input_bairro.value;
+    var cidadeVar = input_cidade.value;
+    var ufVar = input_uf.value;
+    var cepVar = input_cep.value;    
+
+    // Verificando se há algum campo em branco
+    if (
+      nomeVar == "" ||
+      sobrenomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      telefoneVar == "" ||
+      ruaVar == "" ||
+      numeroVar == "" ||
+      complementoVar == "" ||
+      bairroVar == "" ||
+      cidadeVar == "" ||
+      ufVar == "" ||
+      cepVar == ""
+    ) {
+      alert(`Preencha todos os campos do cadastro.`)
+      /*cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";      
+        // finalizarAguardar();
+        return false;
+      
+    } else {
+      setInterval(sumirMensagem, 5000);*/
+    } else if (senhaVar != confirmacaoSenhaVar){
+      alert(`As senhas não estão iguais`)
+    }
+    
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        sobrenomeServer: sobrenomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        telefoneServer: telefoneVar,
+        ruaServer: ruaVar,
+        numeroServer: numeroVar,
+        complementoServer: complementoVar,
+        bairroServer: bairroVar,
+        cidadeServer: cidadeVar,
+        ufServer: ufVar,
+        cepServer: cepVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "Login.html";
+          }, "2000");
+
+          limparFormulario();
+        //   finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  // Listando empresas cadastradas 
+  function listar() {
+    fetch("/usuarios/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((usuarios) => {
+          usuarios.forEach((usuario) => {
+            listaDeUsuariosCadastrados.push(usuario);
+
+            console.log("listaDeUsuariosCadastrados")
+            // console.log(listaDeUsuariosCadastrados[0].codigo_ativacao)
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+  
+</script>

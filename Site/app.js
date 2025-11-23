@@ -15,8 +15,14 @@ var HOST_APP = process.env.APP_HOST;
 
 var app = express();
 
+// Site Umui
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
+var enderecoRouter = require("./src/routes/endereco");
+//
+
+//var indexRouter = require("./src/routes/index");
+//var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 var aquariosRouter = require("./src/routes/aquarios");
@@ -28,8 +34,14 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 
+// Site Umui
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
+//
+
+
+//app.use("/", indexRouter);
+// app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/aquarios", aquariosRouter);

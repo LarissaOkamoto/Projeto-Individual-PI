@@ -1,0 +1,249 @@
+/* INÍCIO NAVBAR*/
+
+body{
+    font-family: "Elms Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0px;
+    padding: 0px;
+}
+
+h1, 
+h2, 
+h3{
+    font-family: "Playfair Display", serif;
+}
+
+.body_dashboard{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+.barra_lateral{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    box-shadow: 0 4px 8px #8a6344;
+    background-color: white;
+    font-size: 16px;
+    flex: 1;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    color: black;
+    align-items: center;
+    list-style: none;
+    padding: 0px 0px 0px 0px;
+    gap: 300px;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: black;
+}
+
+.navbar a:hover{    
+    color: #8a6344;
+}
+
+.navbar_topo{
+    gap: 50px;
+}
+
+.navbar .Dashboard{
+    background-color: #b99573;
+    width: 110px;
+    height: 40px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    color: white;
+    justify-content:center;
+    padding: 0px 15px 0px 15px;
+    margin: 0px 0px 0px 0px;
+}
+
+.navbar .img-logo{
+    width:200px;
+}
+
+.button_login{
+    border: 2px;
+    border-style:solid;
+    border-color: #b99573;
+    width: 150px;
+    height: 40px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content:space-between;
+    padding: 0px 15px 0px 15px;
+
+}
+
+.img-exit,
+.img-telefone,
+.img-instagram,
+.img-email{
+    width: 20px;
+}
+
+/* FIM NAVBAR*/
+
+
+/*INICIO DASHBOARD*/
+.img-header_dashboard{
+    display: flex;
+    width: 1200px;
+}
+
+.divider{
+    border: none; 
+    border-top: 1px solid #b99573;
+    margin: 20px 0px 20px 0px; 
+    width: 100%;
+}
+
+.dashboard{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+}
+
+.inicie_projeto{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 70px;
+}
+
+.novo_projeto{
+    background-color: white;
+    border: 2px solid #b99573;
+    border-radius: 14px;
+    width: 300px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    gap: 50px;
+    text-align: center;
+    color:#b99573
+}
+
+.inicie_projeto a{
+    text-decoration: none;
+}
+
+.continuar_projeto{
+    display: flex;
+    flex-direction: column;
+}
+
+.body_atividades{
+    color: white;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.atividades_1a3,
+.atividades_4a6{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    text-decoration: none;
+    color: white;
+}
+
+.img-novo_projeto{
+    width: 300px;
+    height: 180px;
+}
+
+.img-atividade1,
+.img-atividade2,
+.img-atividade3,
+.img-atividade4,
+.img-atividade5,
+.img-atividade6{
+    width: 200px;
+    border-radius: 14px;
+}
+
+.button_atividades{
+    color: white;
+}
+
+.button_atividade_individual{
+    display: flex;
+    flex-direction: column;
+    width: 210px;
+    height: 160px;
+    color: white;
+    background-color: #b99573;
+    border-radius: 14px;
+    border-style: solid;
+    border-color:#b99573;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.button_novo_projeto{
+    display: flex;
+    width: 200px;
+    height: 50px;
+    color:white;
+    background-color: #b99573;
+    border-radius: 14px;
+    border-style: solid;
+    border-color:#b99573;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.dados_andamento{
+    display: flex;
+    flex-direction: column;
+}
+
+.andamento{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.img-album{
+    width: 200px;
+}
+
+.metricas_grafico{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.grafico{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+
+.metricas{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+/* FIM DASHBOARD*/
