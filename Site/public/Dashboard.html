@@ -21,30 +21,35 @@
             <img src="" class="img-login">
             <p>Bem vindo(a)!</p>
         </div>
+        <br/>
         <li>
             <a href="Dashboard.html" class="button_dashboard">Dashboard</a>
         </li>
+        <br/>
         <li>
             <a href="Atividades.html" class="button_atividades">Atividades</a>
         </li>
+        <br/>
+        <br/>
         <li>
-            <div class="button_sair" onclick="window.location.href='Index.html';">
+            <div class="button_sair" onclick="window.location.href='./Index.html';">
             <img src="Imagens\img-exit.png" class="img-exit">
-            <a href="Index.html" class="Login">Saír</a>
+            <a href="./Index.html" class="Login">Saír</a>
             </div>
         </li>
         </div>
         <div class="contatos">
-            <b>Fale Conosco</b>
+            <b>Contatos</b>
+            <br/>
             <br/>
             <img src="Imagens\img-telefone.png" class="img-telefone">
-            <b>Telefone:</b> +55 11 3000-0000
+            +55 11 3000-0000
             <br/>
             <img src="Imagens\img-email.png" class="img-email">
-            <b>E-mail:</b> umui@outlook.com
+            umui@outlook.com
             <br/>
             <img src="Imagens\img-instagram.png" class="img-instagram">
-            <b>Instagram:</b> @Umui.Project
+            @Umui.Project
         </div>
         </ul>
     </div>
@@ -52,7 +57,7 @@
     <div class="dashboard">
         <img src="Imagens\img-header_dashboard.png" class="img-header_dashboard">
         <div class="explicacao">
-            <h2>Olá, ${nome}, vamos começar a construir uma memória especial?</h2>
+            <h2>Olá, vamos começar a construir uma memória especial?</h2>
             Este é um espaço para eternizar histórias, homenagens e lembranças.
         </div>
         <br/>
@@ -127,13 +132,21 @@
                 <div class="metricas_grafico">
                 <div class="metricas">
                     <div class="kpi_andamento">
-                    % de conclusão total
-                    <div id="div_mensagem"></div>
+                    <h3>Porcentagem de conclusão total do projeto</h3>
+                    <br/>
+                    <div id="div_mensagem" class ="texto_porcentagem"></div>
+                    <br/>
+                    Uma história se concretizando ...
+                    <br/>
+                    
                     </div>
                 </div>
                 <div class="grafico">
                     Porcentagem de progresso %
-                    <canvas id="barra"></canvas>
+                    <div class="grafico1_2">
+                    <canvas id="barra1" class="grafico1" width="350px" height="350px"></canvas>
+                    <canvas id="barra2" class="grafico2" width="300px" height="300px"></canvas>
+                    </div>
                 </div>
                 </div>
             </div>
@@ -145,17 +158,19 @@
 </html>
 
 <script>
+    var porcentagemTotal = 0;
+
     function obterDados(){
-    // fetch('/obterDados')
-  // .then(function(response){
-  //   return response.json();
-  // })
-  // .then(function(data){
-  //   plotarGraficoBarra(data);
-  // })
-  // .catch(function(err){
-  //   console.log(err);
-  // })
+    /*fetch('/obterDados')
+    .then(function(response){
+    return response.json();
+    })
+    .then(function(data){
+    plotarGraficoBarra(data);
+    })
+    .catch(function(err){
+    console.log(err);
+    })*/
 
 
     var dados = [{
@@ -183,70 +198,79 @@
     Andamento: 1
   }]
 
-  plotarGraficoBarra(dados)
+  
+  var soma = Number(dados[0].Andamento) + Number(dados[1].Andamento) + Number(dados[2].Andamento) + Number(dados[3].Andamento) + Number(dados[4].Andamento) + Number(dados[5].Andamento);
+  var porcentagem = (soma / dados.length) * 100
 
-  var porcentagem = ((dados[0].andamento + dados[1].andamento + dados[2].andamento + dados[3].andamento + dados[4].andamento + dados[5].andamento)/6)*100;
+    div_mensagem.innerHTML = `${Number(porcentagem).toFixed(0)}%`;
 
-    div_mensagem.innerHTML = `${porcentagem}`;
+    porcentagemTotal = porcentagem;
+
+      plotarGraficoBarra(dados)
 }
 
 
 function plotarGraficoBarra(dados){
 
-  var Atividades = [];
+  var Atividade = [];
   var Andamento = [];
+  var Atividades = [`Conclusão do Projeto final`];
 
   // Preenchendo os arrays com os dados
   for(var i = 0; i < dados.length; i++){
-    Atividades.push(dados[i].Atividades);
+    Atividade.push(dados[i].Atividade);
     Andamento.push(dados[i].Andamento);
   }
 
-  // Capturando o elemento canvas pelo id 
-  /*const config = {
-    type: 'bar',
-    data,
-    options: {
-    indexAxis: 'y',
-    }
-    };
 
-    const labels = Utils.atividades({count: 6});
-    const data = {
-    labels: labels,
-    datasets: [{
-    label: 'Andamento do projeto',
-    data: porcentagem,
-    backgroundColor: [
-      'rgba(255, 99, 132, 0.2)'
-    ],
-    borderColor: [
-      'rgb(255, 99, 132)'
-    ],
-    borderWidth: 1
-  }]
-};
-*/
-
-
-  var ctx = document.getElementById('barra').getContext('2d');
+  var ctx = document.getElementById('barra1').getContext('2d');
   // Criando o gráfico de barra usando o Chart.js
+  var myChart = new Chart(ctx, {
+      type: 'bar', // Tipo de gráfico: barra
+      data: { // Dados para o gráfico
+          labels: Atividade, // Rótulos no eixo X
+          datasets: [{
+              label: 'Atividades Completas', // Nome do conjunto de dados
+              data: Andamento, // Dados dos votos
+              backgroundColor: [
+                  'rgba(185, 149, 115, 0.2)', // Cor de fundo das barras
+              ],
+              borderColor: [
+                  'rgba(185, 149, 115, 1)', // Cor da borda das barras
+              ],
+              borderWidth: 1 // Largura da borda das barras
+          }]
+      },
+  });
+
+  var ctx = document.getElementById('barra2').getContext('2d');
+  // Criando o gráfico de barra usando o Chart.js
+  
+  porcentagemTotal
   var myChart = new Chart(ctx, {
       type: 'bar', // Tipo de gráfico: barra
       data: { // Dados para o gráfico
           labels: Atividades, // Rótulos no eixo X
           datasets: [{
-              label: 'Andamento', // Nome do conjunto de dados
-              data: Andamento, // Dados dos votos
+              label: 'Porcentagem concluída', // Nome do conjunto de dados
+              data: [porcentagemTotal], // Dados dos votos
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)', // Cor de fundo das barras
+                  'rgba(134, 171, 82, 0.2)', // Cor de fundo das barras
               ],
               borderColor: [
-                  'rgba(255, 99, 132, 1)', // Cor da borda das barras
+                  'rgba(134, 171, 82, 1)', // Cor da borda das barras
               ],
               borderWidth: 1 // Largura da borda das barras
           }]
       },
+      options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 100
+            }
+        }
+    }
   });
 }
 
