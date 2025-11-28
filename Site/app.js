@@ -19,13 +19,13 @@ var app = express();
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var enderecoRouter = require("./src/routes/endereco");
+var atividadesRouter = require("./src/routes/atividades");
+var projetosRouter = require("./src/routes/projetos");
+var avisosRouter = require("./src/routes/avisos");
 //
 
 //var indexRouter = require("./src/routes/index");
 //var usuarioRouter = require("./src/routes/usuarios");
-var avisosRouter = require("./src/routes/avisos");
-var medidasRouter = require("./src/routes/medidas");
-var aquariosRouter = require("./src/routes/aquarios");
 var empresasRouter = require("./src/routes/empresas");
 
 app.use(express.json());
@@ -37,16 +37,17 @@ app.use(cors());
 // Site Umui
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
+app.use("/endereco", enderecoRouter);
+app.use("/avisos", avisosRouter);
+app.use("/atividades", atividadesRouter);
+app.use("/projetos", projetosRouter);
 //
 
 
 //app.use("/", indexRouter);
 // app.use("/usuarios", usuarioRouter);
-app.use("/avisos", avisosRouter);
-app.use("/medidas", medidasRouter);
-app.use("/aquarios", aquariosRouter);
-app.use("/empresas", empresasRouter);
 
+app.use("/empresas", empresasRouter);
 app.listen(PORTA_APP, function () {
     console.log(`
     ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  

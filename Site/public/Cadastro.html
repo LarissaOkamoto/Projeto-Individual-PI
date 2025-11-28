@@ -151,7 +151,7 @@
   let listaDeUsuariosCadastrados = [];
 
   function cadastrar() {
-    // aguardar();
+    aguardar();
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
@@ -186,14 +186,17 @@
       cepVar == ""
     ) {
       alert(`Preencha todos os campos do cadastro.`)
+      finalizarAguardar();
+      return false; 
+    
+      
       /*cardErro.style.display = "block";
       mensagem_erro.innerHTML =
         "(Mensagem de erro para todos os campos em branco)";      
         // finalizarAguardar();
         return false;
       
-    } else {
-      setInterval(sumirMensagem, 5000);*/
+    */
     } else if (senhaVar != confirmacaoSenhaVar){
       alert(`As senhas não estão iguais`)
     }
@@ -235,14 +238,14 @@
           }, "2000");
 
           limparFormulario();
-        //   finalizarAguardar();
+          finalizarAguardar();
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        // finalizarAguardar();
+        finalizarAguardar();
       });
 
     return false;
