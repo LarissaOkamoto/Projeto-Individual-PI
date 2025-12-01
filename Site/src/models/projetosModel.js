@@ -8,9 +8,9 @@ function buscarProjetosPorUsuario(idUsuario) {
   return database.executar(instrucaoSql);
 }
 
-function cadastrar(nome, descricao, idUsuario) {
+function cadastrar(idProjeto, nome, descricao, idUsuario) {
   
-  var instrucaoSql = `INSERT INTO (nome, descricao, fkUsuario) projeto VALUES (${nome}, ${descricao}, ${idUsuario})`;
+  var instrucaoSql = `INSERT INTO (idProjeto, nome, descricao, fkUsuario) projeto VALUES (${idProjeto}, ${nome}, ${descricao}, ${idUsuario})`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);

@@ -4,6 +4,10 @@ var atividadesModel = require("../models/atividadesModel");
 function buscarProjetosPorUsuario(req, res) {
   var idUsuario = req.params.idUsuario;
 
+  atividadesModel.resultadoConcluirAtividade(idProjeto).then((resultado) => {
+      res.status(200).json(resultado);
+    });
+
   projetosModel.buscarProjetosPorUsuario(idUsuario).then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado);

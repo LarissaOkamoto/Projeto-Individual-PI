@@ -64,7 +64,7 @@
             </div>
             <br/><br/>
             <div class="concluido">
-                <button onclick="marcar()" class="button_checkbox">
+                <button onclick="concluirAtividade()" class="button_checkbox">
                 <h4>Marcar como concluído</h4>
                 <input type="checkbox" id="checkbox_concluido" class="checkbox_concluido">
                 </button>
@@ -81,7 +81,7 @@
 
 <script>
 
-    function marcar(){
+    function concluirAtividade(){
         var concluido = document.getElementById('checkbox_concluido');
 
         //var idProjeto = JSON.parse(sessionStorage.atividades).find(atividades => idAtividade == idProjeto).statusConclusao;
@@ -102,14 +102,50 @@
             })
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-            });*/
+            });
+            */
 
-            document.getElementById("checkbox_concluido").disabled = true;
+            
+            var idAtividadeVar = "1";
+            var nomeVar = "Linha da Vida";
+            var statusConclusaoVar = "1";
+            var fkProjetoVar = "1";
 
+            fetch("/atividades/concluirAtividade", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                
+                idAtividadeServer: idAtividadeVar,
+                nomeServer: nomeVar,
+                statusConclusaoServer: statusConclusaoVar,
+                fkProjetoServer: fkProjetoVar,
+            }),
+            })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
 
-            setTimeout(function() {
-            window.location.href = "./Dashboard.html";
-            }, 3000);
+                if (resposta.ok) {
+
+                document.getElementById("checkbox_concluido").disabled = true;
+
+                alert(`Atividade concluida com sucesso!`);
+
+                setTimeout(() => {
+                    window.location = "./Dashboard.html";
+                }, "500");
+
+                } else {
+                throw alert(`Houve um erro ao registrar a atividade`);
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+            return false;
 
             //var button_atividade1 = document.querySelector('.button_atividade_individual1'); 
 
@@ -118,5 +154,5 @@
         } else {
             document.getElementById("checkbox_concluido").disabled = false;
         } 
-    }
+}
 </script>

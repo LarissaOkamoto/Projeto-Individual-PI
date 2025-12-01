@@ -1,36 +1,42 @@
 var atividadesModel = require("../models/atividadesModel");
 
-function postarStatusAtividades(req, res) {
+function concluirAtividade(req, res) {
     var idAtividade = req.body.idAtividadeServer;
+    var nome = req.body.nomeServer;
     var statusConclusao = req.body.statusConclusaoServer;
+    var fkProjeto = req.body.fkProjetoServer;
 
-    console.log(`Verificando status da atividade`);
+    /*console.log(`Verificando status da atividade`);
 
-    atividadesModel.postarStatusAtividades(idAtividade, statusConslusao
-
-    ).
-    then(resultadoStatusConclusao => {
+    atividadesModel.concluirAtividade(
+        idAtividade,
+        nome,
+        statusConclusao, 
+        fkProjeto
+    )
+    .then(resultadoConcluirAtividade => {
     
-        const idProjeto = resultadoProjeto.insertId;
+        const idProjeto = resultadoConcluirAtividade.insertId;
     
-                    return atividadesModel.postarStatusConclusao(
+                    return atividadesModel.resultadoConcluirAtividade(
                         idAtividade,
+                        nome,
                         statusConclusao,
                         idProjeto
                     );
     })
     
-    .then(resultadoStatusConclusao => {
+    .then(resultadoConcluirAtividade => {
                 res.json({
                     mensagem: "Atividade concluida com sucesso!",
-                    StatusConclusaoresultadoStatusConclusao: resultadoStatusConclusao
+                    projeto: resultadoConcluirAtividade
     });
     })
     
     .catch(erro => {
                 console.log("Erro na conclusão:", erro);
                 res.status(500).json(erro.sqlMessage);
-    });
+    });*/
     
 }
 
@@ -74,7 +80,8 @@ function buscarUltimasAtividades(req, res) {
 }*/
 
 module.exports = {
-    buscarUltimasAtividades
+    buscarUltimasAtividades,
+    concluirAtividade
    // buscarAtividadesEmTempoReal
 
 }

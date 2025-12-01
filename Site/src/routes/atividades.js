@@ -3,7 +3,11 @@ var router = express.Router();
 
 var atividadesController = require("../controllers/atividadesController");
 
-router.post("/ultimas/:idProjeto", function (req, res){
+router.post("/concluirAtividade", function (req, res) {
+    atividadesController.concluirAtividade(req, res);
+})
+
+/*router.post("/ultimas/:idProjeto", function (req, res){
     atividadesController.postarStatusAtividades (req, res)
 });
 
@@ -15,7 +19,7 @@ router.patch("/ultimas/:idProjeto", function (req, res) {
     atividadesController.buscarUltimasAtividades(req, res);
 });
 
-/*router.get("/tempo-real/:idProjeto", function (req, res) {
+router.get("/tempo-real/:idProjeto", function (req, res) {
     atividadesController.buscarAtividadesEmTempoReal(req, res);
 })*/
 
