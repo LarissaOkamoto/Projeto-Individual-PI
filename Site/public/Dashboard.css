@@ -193,7 +193,8 @@ h3{
     color: white;
 }
 
-.button_atividade_individual{
+.button_atividade_individual1, .button_atividade_individual2, .button_atividade_individual3,
+.button_atividade_individual4, .button_atividade_individual5, .button_atividade_individual6{
     display: flex;
     flex-direction: column;
     width: 210px;

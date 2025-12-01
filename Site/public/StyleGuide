@@ -16,4 +16,13 @@ Título:24px
 Subtítulo:22px
 Texto:18px
 
+                    for(json){
+                        if(atividade_atula[i].status==1){
+                        id_atividade_1.disable = 'true'
+
+                        }
+                    }
+
+
 */
+

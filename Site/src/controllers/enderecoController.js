@@ -1,5 +1,4 @@
 var enderecoModel = require("../models/enderecoModel");
-var usuarioModel = require("../models/usuarioModel");
 
 
 function listar(req, res) {

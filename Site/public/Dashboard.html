@@ -69,41 +69,41 @@
             <div class="body_atividades">
             <div class="atividades_1a3">
             <li>
-                <div class="button_atividade_individual" onclick="window.location.href='Atividades.html';">
+                <div class="button_atividade_individual1" onclick="window.location.href='Atividade1.html';">
                 <img src="Imagens\img-atividade1.png" class="img-atividade1">
-                <a href="Atividades.html" class="button_atividades">Atividade 1</a>
+                <a href="Atividade1.html" class="button_atividades">Atividade 1</a>
                 </div>
             </li>
             <li>
-                <div class="button_atividade_individual" onclick="window.location.href='Atividades.html';">
+                <div class="button_atividade_individual2" onclick="window.location.href='Atividade2.html';">
                 <img src="Imagens\img-atividade2.png" class="img-atividade2">
-                <a href="Atividades.html" class="button_atividades">Atividade 2</a>
+                <a href="Atividade2.html" class="button_atividades">Atividade 2</a>
                 </div>
             </li>
             <li>
-                <div class="button_atividade_individual" onclick="window.location.href='Atividades.html';">
+                <div class="button_atividade_individual3" onclick="window.location.href='Atividade3.html';">
                 <img src="Imagens\img-atividade3.png" class="img-atividade3">
-                <a href="Atividades.html" class="button_atividades">Atividade 3</a>
+                <a href="Atividade3.html" class="button_atividades">Atividade 3</a>
                 </div>
             </li>
             </div>
             <div class="atividades_4a6">
             <li>
-                <div class="button_atividade_individual" onclick="window.location.href='Atividades.html';">
+                <div class="button_atividade_individual4" onclick="window.location.href='Atividade4.html';">
                 <img src="Imagens\img-atividade4.png" class="img-atividade4">
-                <a href="Atividades.html" class="button_atividades">Atividade 4</a>
+                <a href="Atividade4.html" class="button_atividades">Atividade 4</a>
                 </div>
             </li>
             <li>
-                <div class="button_atividade_individual" onclick="window.location.href='Atividades.html';">
+                <div class="button_atividade_individual5" onclick="window.location.href='Atividade5.html';">
                 <img src="Imagens\img-atividade5.png" class="img-atividade5">
-                <a href="Atividades.html" class="button_atividades">Atividade 5</a>
+                <a href="Atividade5.html" class="button_atividades">Atividade 5</a>
                 </div>
             </li>
             <li>
-                <div class="button_atividade_individual" onclick="window.location.href='Atividades.html';">
+                <div class="button_atividade_individual6" onclick="window.location.href='Atividade6.html';">
                 <img src="Imagens\img-atividade6.png" class="img-atividade6">
-                <a href="Atividades.html" class="button_atividades">Atividade 6</a>
+                <a href="Atividade6.html" class="button_atividades">Atividade 6</a>
                 </div>
             </li>
             </div>
@@ -144,7 +144,7 @@
                 <div class="grafico">
                     Porcentagem de progresso %
                     <div class="grafico1_2">
-                    <canvas id="barra1" class="grafico1" width="350px" height="350px"></canvas>
+                    <canvas id="pie" class="grafico1" width="350px" height="350px"></canvas>
                     <canvas id="barra2" class="grafico2" width="300px" height="300px"></canvas>
                     </div>
                 </div>
@@ -160,57 +160,45 @@
 <script>
     var porcentagemTotal = 0;
 
-    function obterDados(){
-    /*fetch('/obterDados')
-    .then(function(response){
-    return response.json();
-    })
-    .then(function(data){
-    plotarGraficoBarra(data);
-    })
-    .catch(function(err){
-    console.log(err);
-    })*/
+    function obterDadosGrafico(idProjeto) {
 
+        alterarTitulo(idProjeto)
 
-    var dados = [{
-    Atividade:'Linha da Vida',
-    Andamento: 1
-  },
-  {
-    Atividade:'Depoimentos',
-    Andamento: 1
-  },
-  {
-    Atividade:'A história em objetos',
-    Andamento: 0
-  },
-  {
-    Atividade:'A origem',
-    Andamento: 1
-  },
-  {
-    Atividade:'Família & amigos',
-    Andamento: 0
-  },
-  {
-    Atividade:'O legado',
-    Andamento: 1
-  }]
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/projeto/ultimas/${idProjeto}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGraficoPie(resposta, idProjeto);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+        //var soma = Number(dados[0].Andamento) + Number(dados[1].Andamento) + Number(dados[2].Andamento) + Number(dados[3].Andamento) + Number(dados[4].Andamento) + Number(dados[5].Andamento);
+        //var porcentagem = (soma / dados.length) * 100
+
+        //div_mensagem.innerHTML = `${Number(porcentagem).toFixed(0)}%`;
+
+        //porcentagemTotal = porcentagem;
+    }
+
+    
 
   
-  var soma = Number(dados[0].Andamento) + Number(dados[1].Andamento) + Number(dados[2].Andamento) + Number(dados[3].Andamento) + Number(dados[4].Andamento) + Number(dados[5].Andamento);
-  var porcentagem = (soma / dados.length) * 100
-
-    div_mensagem.innerHTML = `${Number(porcentagem).toFixed(0)}%`;
-
-    porcentagemTotal = porcentagem;
-
-      plotarGraficoBarra(dados)
-}
 
 
-function plotarGraficoBarra(dados){
+/*function plotarGraficoBarra(dados){
 
   var Atividade = [];
   var Andamento = [];
@@ -221,9 +209,7 @@ function plotarGraficoBarra(dados){
     Atividade.push(dados[i].Atividade);
     Andamento.push(dados[i].Andamento);
   }
-
-
-  var ctx = document.getElementById('barra1').getContext('2d');
+var ctx = document.getElementById('barra1').getContext('2d');
   // Criando o gráfico de barra usando o Chart.js
   var myChart = new Chart(ctx, {
       type: 'bar', // Tipo de gráfico: barra
@@ -273,6 +259,104 @@ function plotarGraficoBarra(dados){
     }
   });
 }
+*/
+
+
+function plotarGraficoPie(dados){
+
+const DATA_COUNT = 6;
+const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 6};
+
+var ctx = document.getElementById('pie').getContext('2d');
+
+  var myChart = new Chart(ctx, {
+  type: 'pie',
+  data:{
+    labels: ['Red', 'Blue'],
+    datasets: [
+    {
+      label: 'Atividades Completas',
+      data: [porcentagemConcluida],
+      backgroundColor: Object.values(Utils.CHART_COLORS),
+    },
+    {
+      label: 'Atividades Pendentes',
+      data: [porcentagemPendente],
+      backgroundColor: Object.values(Utils.CHART_COLORS),
+    },
+    ]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+        legend: {
+            position: 'top',
+        },
+        title: {
+            display: true,
+            text: 'Chart.js Pie Chart'
+        }
+        }
+    },
+});
+
+}
+
+/*function atualizarGrafico(idProjeto, dados, myChart) {
+
+
+        fetch(`/projeto/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    obterdados(idAquario);
+                    // alertar(novoRegistro, idAquario);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+                    let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
+                    avisoCaptura.innerHTML = ""
+
+
+                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].momento_grafico)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+                        myChart.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+}*/
+
 
     
 </script>

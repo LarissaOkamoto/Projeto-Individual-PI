@@ -1,35 +1,58 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarUltimasAtividades(nome, descricao, statusConclusao, dtConclusao, idProjeto) {
 
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    FROM medida
-                    WHERE fk_aquario = ${idAquario}
-                    ORDER BY id DESC LIMIT ${limite_linhas}`;
+    /*var instrucaoSql = `
+    SELECT 
+        nome as 'Atividade', 
+        descricao as 'Descrição',
+        statusConcluido AS 'Status da Atividade',
+        dtConclusao AS 'Data de Conclusão'
+                    FROM atividades
+                    WHERE fkProjeto = ${idProjeto}
+                    ORDER BY dtConclusao DESC LIMIT ${limite_linhas}`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);*/
+
+    var instrucaoSql = `
+    SELECT 
+        nome as 'Atividade', 
+        statusConclusao AS 'Status da Atividade'
+                    FROM atividades
+                    WHERE fkProjeto = ${idProjeto}
+                    ORDER BY dtConclusao`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+    var instrucaoSql = `
+    SELECT 
+        nome as 'Atividade', 
+        statusConcluido AS 'Status da Atividade'
+                    FROM atividades
+                    WHERE fkProjeto = ${idProjeto} AND statusConclusao = 'false'
+                    ORDER BY dtConclusao`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+/*function buscarAtividadesEmTempoReal(idProjeto) {
 
     var instrucaoSql = `SELECT 
         dht11_temperatura as temperatura, 
         dht11_umidade as umidade,
                         DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        FROM medida WHERE fk_aquario = ${idAquario} 
+                        fk_Projeto 
+                        FROM medida WHERE fk_Projeto = ${idProjeto} 
                     ORDER BY id DESC LIMIT 1`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
-}
+}*/
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarUltimasAtividades
+    //buscarAtividadesEmTempoReal
 }

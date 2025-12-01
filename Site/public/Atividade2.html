@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="Atividades.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="Atividade1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body onload="obterDados()">
+<body>
 
 <div class="body_atividade">
     <div class="barra_lateral">
@@ -56,23 +56,67 @@
 
     <div class="atividade">
         <div class="atividade1">
-            <h2>Atividade 1:</h2>
-            <h3>Linha da Vida</h3>
+            <h2>Atividade 2:</h2>
+            <h3>Depoimentos</h3>
             <div class="descricao">
             <b>Descrição:</b><br/>
             texto texto texto
             </div>
             <br/><br/>
             <div class="concluido">
+                <button onclick="marcar()" class="button_checkbox">
                 <h4>Marcar como concluído</h4>
-                <input type="checkbox" id="input_concluido" class="checkbox_concluido">
+                <input type="checkbox" id="checkbox_concluido" class="checkbox_concluido">
+                </button>
             </div>
         </div>
         <div>
-        <img src="Imagens\img-atividade1_1.jpg" class="img-atividade1">
+        <img style="height: 700px; width: 650px;" src="../Imagens/img-atividade2.png" class="img-atividade1">
         </div>
     </div>
 </div>
     
 </body>
 </html>
+
+<script>
+
+    function marcar(){
+        var concluido = document.getElementById('checkbox_concluido');
+
+        //var idProjeto = JSON.parse(sessionStorage.atividades).find(atividades => idAtividade == idProjeto).statusConclusao;
+        
+        if(concluido.checked){
+
+            /*var atividades = JSON.parse(idProjetos);
+
+            fetch(`/atividades/ultimas/:idProjeto`, {
+            method: "POST",
+            })
+            .then(function (resposta) {
+                resposta.json().then(function (resposta) {
+                projetos.forEach(idAtividade => {
+                    `${statusConclusao} = '1';`
+                });
+                });
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });*/
+
+            document.getElementById("checkbox_concluido").disabled = true;
+
+
+            setTimeout(function() {
+            window.location.href = "./Dashboard.html";
+            }, 3000);
+
+            //var button_atividade1 = document.querySelector('.button_atividade_individual1'); 
+
+            document.getElementById("button_atividade_individual1").disabled = true;
+            
+        } else {
+            document.getElementById("checkbox_concluido").disabled = false;
+        } 
+    }
+</script>

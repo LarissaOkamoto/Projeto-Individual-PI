@@ -19,17 +19,21 @@ function buscarProjetosPorUsuario(req, res) {
 
 
 function cadastrar(req, res) {
+  var idProjeto = req.body.idProjeto;
+  var nome = req.body.nome;
   var descricao = req.body.descricao;
   var idUsuario = req.body.idUsuario;
 
-  if (descricao == undefined) {
+  if (nome == undefined) {
+    res.status(400).send("nome está undefined!");
+  } else if (descricao == undefined) {
     res.status(400).send("descricao está undefined!");
   } else if (idUsuario == undefined) {
     res.status(400).send("idUsuario está undefined!");
   } else {
 
 
-    projetosModel.cadastrar(descricao, idUsuario)
+    projetosModel.cadastrar(nome, descricao, idUsuario)
       .then((resultado) => {
         res.status(201).json(resultado);
       }

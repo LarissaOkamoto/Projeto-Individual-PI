@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Atividade1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="body_atividade">
+    <div class="barra_lateral">
+        <ul class="navbar">
+        <div class="navbar_topo">
+        <img src="Imagens\img-logo3.png" class="img-logo">
+        <div class="login">
+            <img src="" class="img-login">
+            <p>Bem vindo(a)!</p>
+        </div>
+        <br/>
+        <li>
+            <a href="Dashboard.html" class="button_dashboard">Dashboard</a>
+        </li>
+        <br/>
+        <li>
+            <a href="Atividades.html" class="button_atividades">Atividades</a>
+        </li>
+        <br/>
+        <br/>
+        <li>
+            <div class="button_sair" onclick="window.location.href='./Index.html';">
+            <img src="Imagens\img-exit.png" class="img-exit">
+            <a href="./Index.html" class="Login">Saír</a>
+            </div>
+        </li>
+        </div>
+        <div class="contatos">
+            <b>Contatos</b>
+            <br/>
+            <br/>
+            <img src="Imagens\img-telefone.png" class="img-telefone">
+            +55 11 3000-0000
+            <br/>
+            <img src="Imagens\img-email.png" class="img-email">
+            umui@outlook.com
+            <br/>
+            <img src="Imagens\img-instagram.png" class="img-instagram">
+            @Umui.Project
+        </div>
+        </ul>
+    </div>
+
+    <div class="atividade">
+        <div class="atividade1">
+            <h2>Atividade 4:</h2>
+            <h3>A origem</h3>
+            <div class="descricao">
+            <b>Descrição:</b><br/>
+            texto texto texto
+            </div>
+            <br/><br/>
+            <div class="concluido">
+                <button onclick="marcar()" class="button_checkbox">
+                <h4>Marcar como concluído</h4>
+                <input type="checkbox" id="checkbox_concluido" class="checkbox_concluido">
+                </button>
+            </div>
+        </div>
+        <div>
+        <img style="height: 700px; width: 650px;" src="../Imagens/img-atividade4.png" class="img-atividade1">
+        </div>
+    </div>
+</div>
+    
+</body>
+</html>
+
+<script>
+
+    function marcar(){
+        var concluido = document.getElementById('checkbox_concluido');
+
+        //var idProjeto = JSON.parse(sessionStorage.atividades).find(atividades => idAtividade == idProjeto).statusConclusao;
+        
+        if(concluido.checked){
+
+            /*var atividades = JSON.parse(idProjetos);
+
+            fetch(`/atividades/ultimas/:idProjeto`, {
+            method: "POST",
+            })
+            .then(function (resposta) {
+                resposta.json().then(function (resposta) {
+                projetos.forEach(idAtividade => {
+                    `${statusConclusao} = '1';`
+                });
+                });
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });*/
+
+            document.getElementById("checkbox_concluido").disabled = true;
+
+
+            setTimeout(function() {
+            window.location.href = "./Dashboard.html";
+            }, 3000);
+
+            //var button_atividade1 = document.querySelector('.button_atividade_individual1'); 
+
+            document.getElementById("button_atividade_individual1").disabled = true;
+            
+        } else {
+            document.getElementById("checkbox_concluido").disabled = false;
+        } 
+    }
+</script>
