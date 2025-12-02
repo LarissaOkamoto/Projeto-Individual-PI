@@ -6,7 +6,7 @@ function concluirAtividade(req, res) {
     var statusConclusao = req.body.statusConclusaoServer;
     var fkProjeto = req.body.fkProjetoServer;
 
-    /*console.log(`Verificando status da atividade`);
+    console.log(`Verificando status da atividade`);
 
     atividadesModel.concluirAtividade(
         idAtividade,
@@ -14,11 +14,11 @@ function concluirAtividade(req, res) {
         statusConclusao, 
         fkProjeto
     )
-    .then(resultadoConcluirAtividade => {
+    .then(concluirAtividade => {
     
-        const idProjeto = resultadoConcluirAtividade.insertId;
+        const idProjeto = concluirAtividade.insertId;
     
-                    return atividadesModel.resultadoConcluirAtividade(
+                    return atividadesModel.concluirAtividade(
                         idAtividade,
                         nome,
                         statusConclusao,
@@ -26,17 +26,17 @@ function concluirAtividade(req, res) {
                     );
     })
     
-    .then(resultadoConcluirAtividade => {
+    .then(concluirAtividade => {
                 res.json({
                     mensagem: "Atividade concluida com sucesso!",
-                    projeto: resultadoConcluirAtividade
+                    projeto: concluirAtividade
     });
     })
     
     .catch(erro => {
                 console.log("Erro na conclusão:", erro);
                 res.status(500).json(erro.sqlMessage);
-    });*/
+    });
     
 }
 

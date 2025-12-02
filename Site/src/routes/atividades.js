@@ -5,7 +5,7 @@ var atividadesController = require("../controllers/atividadesController");
 
 router.post("/concluirAtividade", function (req, res) {
     atividadesController.concluirAtividade(req, res);
-})
+});
 
 /*router.post("/ultimas/:idProjeto", function (req, res){
     atividadesController.postarStatusAtividades (req, res)
