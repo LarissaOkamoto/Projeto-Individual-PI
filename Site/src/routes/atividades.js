@@ -15,6 +15,9 @@ router.get("/porcentagemPendente", function (req, res) {
     atividadesController.porcentagemPendente(req, res);
 });
 
+router.get("/porcentagemGeral", function (req, res) {
+    atividadesController.porcentagemGeral(req, res);
+});
 
 
 /*router.post("/ultimas/:idProjeto", function (req, res){

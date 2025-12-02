@@ -64,7 +64,7 @@
             </div>
             <br/><br/>
             <div class="concluido">
-                <button onclick="marcar()" class="button_checkbox">
+                <button onclick="concluirAtividade()" class="button_checkbox">
                 <h4>Marcar como concluído</h4>
                 <input type="checkbox" id="checkbox_concluido" class="checkbox_concluido">
                 </button>
@@ -81,42 +81,50 @@
 
 <script>
 
-    function marcar(){
+    function concluirAtividade(){
         var concluido = document.getElementById('checkbox_concluido');
-
-        //var idProjeto = JSON.parse(sessionStorage.atividades).find(atividades => idAtividade == idProjeto).statusConclusao;
         
         if(concluido.checked){
+            
+            var idAtividadeVar = 3;
 
-            /*var atividades = JSON.parse(idProjetos);
+            fetch("/atividades/concluirAtividade", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                
+                idAtividadeServer: idAtividadeVar,
 
-            fetch(`/atividades/ultimas/:idProjeto`, {
-            method: "POST",
+            }),
             })
             .then(function (resposta) {
-                resposta.json().then(function (resposta) {
-                projetos.forEach(idAtividade => {
-                    `${statusConclusao} = '1';`
-                });
-                });
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    document.getElementById("checkbox_concluido").disabled = true;
+
+                    alert(`Atividade concluida com sucesso!`);
+                    
+                    setTimeout(() => {
+                        window.location = "./Dashboard.html";
+                    }, "500");
+
+                    document.getElementById("button_atividade_individual1").disabled = true;
+
+                } else {
+                throw alert(`Houve um erro ao registrar a atividade`);
+                }
             })
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-            });*/
+            });
 
-            document.getElementById("checkbox_concluido").disabled = true;
+            return false;
 
-
-            setTimeout(function() {
-            window.location.href = "./Dashboard.html";
-            }, 500);
-
-            //var button_atividade1 = document.querySelector('.button_atividade_individual1'); 
-
-            document.getElementById("button_atividade_individual1").disabled = true;
-            
         } else {
             document.getElementById("checkbox_concluido").disabled = false;
         } 
-    }
+}
 </script>

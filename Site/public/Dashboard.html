@@ -69,7 +69,7 @@
             <div class="body_atividades">
             <div class="atividades_1a3">
             <li>
-                <div class="button_atividade_individual1" onclick="window.location.href='Atividade1.html';">
+                <div class="button_atividade_individual1" id="button_atividade_individual1" onclick="window.location.href='Atividade1.html';">
                 <img src="Imagens\img-atividade1.png" class="img-atividade1">
                 <a href="Atividade1.html" class="button_atividades">Atividade 1</a>
                 </div>
@@ -119,7 +119,7 @@
                 <br/>
                 <br/>
                 <li>
-                <a href="" class="button_novo_projeto">Inicie o seu novo projeto!</a>
+                <a onclick="novo_projeto()" class="button_novo_projeto">Inicie o seu novo projeto!</a>
                 </li>
             </div>
 
@@ -134,7 +134,7 @@
                     <div class="kpi_andamento">
                     <h3>Porcentagem de conclusão total do projeto</h3>
                     <br/>
-                    <div id="div_mensagem" class ="texto_porcentagem"></div>
+                    <div id="div_mensagem_porcentagem" class ="texto_porcentagem"></div>
                     <br/>
                     Uma história se concretizando ...
                     <br/>
@@ -142,7 +142,7 @@
                     </div>
                 </div>
                 <div class="grafico">
-                    Porcentagem de progresso %
+                    Andamento do Projeto:
                     <div class="grafico1_2">
                         <div>
                         <canvas id="pie" class="grafico1" width="350px" height="350px"></canvas>
@@ -158,12 +158,13 @@
 </html>
 
 <script>
-    function obterDados(){
+function obterDados(){
 
 var idProjeto = 1;
 
 var resposta1 = ""
 var resposta2 = ""
+var resposta3 = ""
 
 fetch(`/atividades/porcentagemConcluido/`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
@@ -197,10 +198,37 @@ fetch(`/atividades/porcentagemPendente/`, { cache: 'no-store' }).then(function (
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
-
+        
         setTimeout(() => plotarGraficoPie(resposta1[0], resposta2[0]), 2000);
+
+
+        fetch(`/atividades/porcentagemGeral/`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(async function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    debugger
+                    resposta3 = await resposta;
+                });
+            } else {
+
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+        setTimeout(() => gerarkpi(resposta3[0]), 2000);
 }
 
+
+function gerarkpi(porcentagemGeral){
+    debugger
+    console.log(porcentagemGeral.geralConcluido)
+    porcentagemTotal = (porcentagemGeral.geralConcluido/6)*100;
+
+    div_mensagem_porcentagem.innerHTML = `${porcentagemTotal.toFixed(1)}%`;
+}
 
 
 function plotarGraficoPie(porcentagemConcluido, porcentagemAndamento){
@@ -213,10 +241,11 @@ function plotarGraficoPie(porcentagemConcluido, porcentagemAndamento){
   new Chart(ctx, {
     type: 'pie',
     data: {
-      labels: ['Red', 'Blue'],
+      labels: ['Concluido','Pendente'],
       datasets: [{
-        label: '# of Votes',
+        label: 'Andamento das Atividades',
         data: [porcentagemConcluido.concluido, porcentagemAndamento.pendente],
+        backgroundColor: ['rgb(153, 207, 112)', 'rgb(241, 128, 128)'],
         borderWidth: 1
       }]
     },
@@ -230,166 +259,12 @@ function plotarGraficoPie(porcentagemConcluido, porcentagemAndamento){
   });
 } 
 
+function novo_projeto(){
+    alert(`
+    Sua solicitação para um novo projeto foi enviado para a nossa equipe! 
 
-/*function plotarGraficoBarra(dados){
-
-  var Atividade = [];
-  var Andamento = [];
-  var Atividades = [`Conclusão do Projeto final`];
-
-  // Preenchendo os arrays com os dados
-  for(var i = 0; i < dados.length; i++){
-    Atividade.push(dados[i].Atividade);
-    Andamento.push(dados[i].Andamento);
-  }
-var ctx = document.getElementById('barra1').getContext('2d');
-  // Criando o gráfico de barra usando o Chart.js
-  var myChart = new Chart(ctx, {
-      type: 'bar', // Tipo de gráfico: barra
-      data: { // Dados para o gráfico
-          labels: Atividade, // Rótulos no eixo X
-          datasets: [{
-              label: 'Atividades Completas', // Nome do conjunto de dados
-              data: Andamento, // Dados dos votos
-              backgroundColor: [
-                  'rgba(185, 149, 115, 0.2)', // Cor de fundo das barras
-              ],
-              borderColor: [
-                  'rgba(185, 149, 115, 1)', // Cor da borda das barras
-              ],
-              borderWidth: 1 // Largura da borda das barras
-          }]
-      },
-  });
-
-  var ctx = document.getElementById('barra2').getContext('2d');
-  // Criando o gráfico de barra usando o Chart.js
-  
-  porcentagemTotal
-  var myChart = new Chart(ctx, {
-      type: 'bar', // Tipo de gráfico: barra
-      data: { // Dados para o gráfico
-          labels: Atividades, // Rótulos no eixo X
-          datasets: [{
-              label: 'Porcentagem concluída', // Nome do conjunto de dados
-              data: [porcentagemTotal], // Dados dos votos
-              backgroundColor: [
-                  'rgba(134, 171, 82, 0.2)', // Cor de fundo das barras
-              ],
-              borderColor: [
-                  'rgba(134, 171, 82, 1)', // Cor da borda das barras
-              ],
-              borderWidth: 1 // Largura da borda das barras
-          }]
-      },
-      options: {
-        scales: {
-            y: {
-                beginAtZero: true,
-                max: 100
-            }
-        }
-    }
-  });
+    Assim que possível, entraremos em contato para iniciarmos uma nova história...
+    `)
 }
-*/
-
-
-// function plotarGraficoPie(dados){
-
-// const DATA_COUNT = 6;
-// const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 6};
-
-// var ctx = document.getElementById('pie').getContext('2d');
-
-//   var myChart = new Chart(ctx, {
-//   type: 'pie',
-//   data:{
-//     labels: ['Red', 'Blue'],
-//     datasets: [
-//     {
-//       label: 'Atividades Completas',
-//       data: [porcentagemConcluida],
-//       backgroundColor: Object.values(Utils.CHART_COLORS),
-//     },
-//     {
-//       label: 'Atividades Pendentes',
-//       data: [porcentagemPendente],
-//       backgroundColor: Object.values(Utils.CHART_COLORS),
-//     },
-//     ]
-//     },
-//     options: {
-//         responsive: true,
-//         plugins: {
-//         legend: {
-//             position: 'top',
-//         },
-//         title: {
-//             display: true,
-//             text: 'Chart.js Pie Chart'
-//         }
-//         }
-//     },
-// });
-
-// }
-
-/*function atualizarGrafico(idProjeto, dados, myChart) {
-
-
-        fetch(`/projeto/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
-
-                    obterdados(idAquario);
-                    // alertar(novoRegistro, idAquario);
-                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico:`);
-                    console.log(dados);
-
-                    let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
-                    avisoCaptura.innerHTML = ""
-
-
-                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                        console.log("---------------------------------------------------------------")
-                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                        console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].momento_grafico)
-                        console.log("Horário do último dado capturado:")
-                        console.log(dados.labels[dados.labels.length - 1])
-                        console.log("---------------------------------------------------------------")
-                    } else {
-                        // tirando e colocando valores no gráfico
-                        dados.labels.shift(); // apagar o primeiro
-                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-
-                        myChart.update();
-                    }
-
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-
-}*/
-
-
     
 </script>

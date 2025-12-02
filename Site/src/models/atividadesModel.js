@@ -20,16 +20,6 @@ function porcentagemConcluido (idAtividade, statusConclusao, fkProjeto) {
                 WHERE fkProjeto = 1 AND statusConclusao = 1;
     `
 
-    /*var instrucaoSql = `
-    SELECT 
-        COUNT 
-        (SELECT idAtividade AS 'Número da Atividade',
-        statusConclusao AS 'Status de Conclusão', 
-        FROM atividade JOIN projeto
-            ON idProjeto = fkProjeto
-                WHERE fkProjeto = 1 AND statusConclusao = 1);
-    `*/
-
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -48,9 +38,22 @@ function porcentagemPendente (idAtividade, statusConclusao, fkProjeto) {
     return database.executar(instrucaoSql);
 }
 
+function porcentagemGeral (idAtividade, statusConclusao, fkProjeto) {
+    console.log("ACESSEI A ATIVIDADE MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", idAtividade, statusConclusao, fkProjeto);
+
+    var instrucaoSql = `
+    SELECT 
+        COUNT(idAtividade) as geralConcluido FROM atividade
+                WHERE fkProjeto = 1 AND statusConclusao = 1;
+    `
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     concluirAtividade,
     porcentagemConcluido,
-    porcentagemPendente
-    //buscarAtividadesEmTempoReal
+    porcentagemPendente,
+    porcentagemGeral
 }

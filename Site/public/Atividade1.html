@@ -83,33 +83,10 @@
 
     function concluirAtividade(){
         var concluido = document.getElementById('checkbox_concluido');
-
-        //var idProjeto = JSON.parse(sessionStorage.atividades).find(atividades => idAtividade == idProjeto).statusConclusao;
         
         if(concluido.checked){
-
-            /*var atividades = JSON.parse(idProjetos);
-
-            fetch(`/atividades/ultimas/:idProjeto`, {
-            method: "POST",
-            })
-            .then(function (resposta) {
-                resposta.json().then(function (resposta) {
-                projetos.forEach(idAtividade => {
-                    `${statusConclusao} = '1';`
-                });
-                });
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-            */
-
             
             var idAtividadeVar = 1;
-            /*var nomeVar = "Linha da Vida";
-            var statusConclusaoVar = "1";
-            var fkProjetoVar = "1";*/
 
             fetch("/atividades/concluirAtividade", {
             method: "PUT",
@@ -119,9 +96,7 @@
             body: JSON.stringify({
                 
                 idAtividadeServer: idAtividadeVar,
-                /*nomeServer: nomeVar,
-                statusConclusaoServer: statusConclusaoVar,
-                fkProjetoServer: fkProjetoVar,*/
+
             }),
             })
             .then(function (resposta) {
@@ -136,8 +111,6 @@
                         window.location = "./Dashboard.html";
                     }, "500");
 
-                    document.getElementById("button_atividade_individual1").disabled = true;
-
                 } else {
                 throw alert(`Houve um erro ao registrar a atividade`);
                 }
@@ -147,8 +120,6 @@
             });
 
             return false;
-
-            //var button_atividade1 = document.querySelector('.button_atividade_individual1'); 
 
         } else {
             document.getElementById("checkbox_concluido").disabled = false;
