@@ -106,22 +106,22 @@
             */
 
             
-            var idAtividadeVar = "1";
-            var nomeVar = "Linha da Vida";
+            var idAtividadeVar = 1;
+            /*var nomeVar = "Linha da Vida";
             var statusConclusaoVar = "1";
-            var fkProjetoVar = "1";
+            var fkProjetoVar = "1";*/
 
             fetch("/atividades/concluirAtividade", {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 
                 idAtividadeServer: idAtividadeVar,
-                nomeServer: nomeVar,
+                /*nomeServer: nomeVar,
                 statusConclusaoServer: statusConclusaoVar,
-                fkProjetoServer: fkProjetoVar,
+                fkProjetoServer: fkProjetoVar,*/
             }),
             })
             .then(function (resposta) {
@@ -135,6 +135,9 @@
                     setTimeout(() => {
                         window.location = "./Dashboard.html";
                     }, "500");
+
+                    document.getElementById("button_atividade_individual1").disabled = true;
+
                 } else {
                 throw alert(`Houve um erro ao registrar a atividade`);
                 }
@@ -147,8 +150,6 @@
 
             //var button_atividade1 = document.querySelector('.button_atividade_individual1'); 
 
-            document.getElementById("button_atividade_individual1").disabled = true;
-            
         } else {
             document.getElementById("checkbox_concluido").disabled = false;
         } 

@@ -12,16 +12,67 @@
 </head>
 <body>
 
-                        <div width="350px" height="350px">
-                        <canvas id="myChart"></canvas>
-                        </div>
+      <div width="350px" height="350px">
+        <canvas id="myChart"></canvas>
+      </div>
+      <button onclick="obterDados()"></button>
 
 </body>
 </html>
 
 <script>
 
-const ctx = document.getElementById('myChart');
+function obterDados(){
+
+var idProjeto = 1;
+
+var resposta1 = ""
+var resposta2 = ""
+
+fetch(`/atividades/porcentagemConcluido/`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(async function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    resposta1 = await resposta
+
+                });
+            } else {
+
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+fetch(`/atividades/porcentagemPendente/`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(async function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    
+                    resposta2 = await resposta
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+        setTimeout(() => plotarGraficoPie(resposta1[0], resposta2[0]), 2000);
+}
+
+
+
+function plotarGraficoPie(porcentagemConcluido, porcentagemAndamento){
+
+  console.log(porcentagemAndamento.pendente)
+  console.log(porcentagemConcluido.concluido)
+
+  const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
     type: 'pie',
@@ -29,7 +80,7 @@ const ctx = document.getElementById('myChart');
       labels: ['Red', 'Blue'],
       datasets: [{
         label: '# of Votes',
-        data: [porcentagemConcluido, porcentagemAndamento],
+        data: [porcentagemConcluido.concluido, porcentagemAndamento.pendente],
         borderWidth: 1
       }]
     },
@@ -41,4 +92,6 @@ const ctx = document.getElementById('myChart');
       }
     }
   });
+}
+
 </script>

@@ -3,9 +3,19 @@ var router = express.Router();
 
 var atividadesController = require("../controllers/atividadesController");
 
-router.post("/concluirAtividade", function (req, res) {
+router.put("/concluirAtividade", function (req, res) {
     atividadesController.concluirAtividade(req, res);
 });
+
+router.get("/porcentagemConcluido", function (req, res) {
+    atividadesController.porcentagemConcluido(req, res);
+});
+
+router.get("/porcentagemPendente", function (req, res) {
+    atividadesController.porcentagemPendente(req, res);
+});
+
+
 
 /*router.post("/ultimas/:idProjeto", function (req, res){
     atividadesController.postarStatusAtividades (req, res)

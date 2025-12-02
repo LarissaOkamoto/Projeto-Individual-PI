@@ -12,4 +12,9 @@ router.post("/cadastrar", function (req, res) {
   projetosController.cadastrar(req, res);
 })
 
+router.get("/buscar/:idUsuario", function (req, res) {
+  projetosController.buscarProjetosPorUsuario(req, res);
+});
+
+
 module.exports = router;

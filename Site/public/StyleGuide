@@ -24,5 +24,10 @@ Texto:18px
                     }
 
 
+                        /*var instrucaoSql = `
+    INSERT INTO atividade (idAtividade, nome, statusConclusao, fkProjeto) VALUES 
+    ('${idAtividade}', '${nome}', '${statusConclusao}', '${fkProjeto}')
+    `*/
+
 */
 
