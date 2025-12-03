@@ -22,6 +22,7 @@ var enderecoRouter = require("./src/routes/endereco");
 var atividadesRouter = require("./src/routes/atividades");
 var projetosRouter = require("./src/routes/projetos");
 var avisosRouter = require("./src/routes/avisos");
+var quizRouter = require("./src/routes/quiz");
 //
 
 //var indexRouter = require("./src/routes/index");
@@ -41,6 +42,7 @@ app.use("/endereco", enderecoRouter);
 app.use("/avisos", avisosRouter);
 app.use("/atividades", atividadesRouter);
 app.use("/projetos", projetosRouter);
+app.use("/quiz", quizRouter);
 //
 
 

@@ -11,43 +11,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 
-<body onload="onloadEsconder()">
-    <div class="header"></div>
-    <div class="container">
+<body onload="iniciarQuiz()">
+
+<div class="body_dashboard">
+    <div class="barra_lateral">
         <ul class="navbar">
-            <div class="navbar_esquerda">
-            <li>
-                <a href="Index.html" class="HomePage">Início</a>
-            </li>
-            <li>
-                <a href="SobreNos.html" class="SobreNos">Sobre</a>
-            </li>
-            <li>
-                <a href="MonteOSeu.html" class="MonteOSeu">Monte o seu</a>
-            </li>
+        <div class="navbar_topo">
+        <img src="Imagens\img-logo3.png" class="img-logo">
+        <div class="login">
+            <img src="" class="img-login">
+            <p>Bem vindo(a)!</p>
+        </div>
+        <br/>
+        <li>
+            <a href="Dashboard.html" class="button_dashboard">Dashboard</a>
+        </li>
+        <br/>
+        <li>
+            <a href="Atividades.html" class="button_atividades">Atividades</a>
+        </li>
+        <br/>
+        <li>
+            <a href="Quiz.html" class="button_quiz">Quiz</a>
+        </li>
+        <br/>
+        <br/>
+        <li>
+            <div class="button_sair" onclick="window.location.href='./Index.html';">
+            <img src="Imagens/img-exit.png" class="img-exit">
+            <a href="./Index.html" class="Login">Saír</a>
             </div>
-            <div class="navbar_central">
-            <img src="Imagens\img-logo3.png" class="img-logo3">
-            </div>
-            <div class="navbar_direita">
-            <li>
-                <a href="Duvidas.html" class="Duvidas">Dúvidas</a>
-            </li>
-            <li>
-                <a href="Contato.html" class="Contato">Contato</a>
-            </li>
-            <li>
-                <div class="button_login" onclick="window.location.href='Login.html';">
-                <img src="Imagens\img-login.png" class="img-login">
-                <a href="Login.html" class="Login">Login</a>
-                </div>
-            </li>
-            </div>
+        </li>
+        </div>
+        <div class="contatos">
+            <b>Contatos</b>
+            <br/>
+            <br/>
+            <img src="Imagens/img-telefone.png" class="img-telefone">
+            +55 11 3000-0000
+            <br/>
+            <img src="Imagens/img-email.png" class="img-email">
+            umui@outlook.com
+            <br/>
+            <img src="Imagens/img-instagram.png" class="img-instagram">
+            @Umui.Project
+        </div>
         </ul>
 </div>
-
-
-
 
 <div class="conteudo_quiz">
     <img src="Imagens\img-quiz.png" class="img-fundo">
@@ -94,54 +104,10 @@
                 <button onclick="submeter()" id="btnSubmeter" class="button_submeter">Submeter resposta</button>
                 <button onclick="avancar()" id="btnProx" class="button_proximo" disabled>Avançar para próxima questão</button>
                 <button onclick="finalizar()" id="btnConcluir" class="button_finalizar" disabled>Finalizar Quiz</button>
-                <!--<button onclick="tentarNovamente()" id="btnTentarNovamente" class="button_tentar_novamente" disabled>Tentar novamente</button>-->
             </div>
         </div>
     </div>
 </div>
-
-
-<hr class="divider">
-    <div class="footer">
-        <div class="footer_body">
-        <div class="contatos">
-            <h2>Fale Conosco</h2>
-            <img src="" class="img-telefone">
-            <p><b>Telefone:</b> +55 11 3000-0000</p>
-            <img src="" class="img-email">
-            <p><b>E-mail:</b> umui@outlook.com</p>
-            <img src="" class="img-instagram">
-            <p><b>Instagram:</b> @Umui.Project</p>
-        </div>
-
-        <div class="ajuda">
-            <h2>Ajuda</h2>
-            <p>FAQ</p>
-            <p>Garantias</p>
-        </div>
-    
-        <div class="dados_empresa">
-            <h2>Umui Project .Ltda</h2>
-            <p>Somos uma marca autoral que eternaliza pessoas, memórias e histórias com muito carinho e amor, por meio de um registro físico.
-            <br/>
-            <p><b>CNPJ:</b> 11.111.111/0001-11</p>
-            <p>Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP, 01414-001</p>
-        </div>
-        </div>
-        <hr class="divider">
-        <div class="footer_botton">
-        <div class="politicas">
-            <div class="button_politicas">
-            <p>Política de Privacidade</p>
-            <p>Termos & Condições</p>
-            <p>Segurança</p>
-            </div>
-            <div class="texto_politicas">
-            <p>Copyright © 2025 Umui, Inc. All rights reserved.</p>
-            </div>
-        </div>
-        </div>
-    </div>
 
 </body>
 
@@ -198,13 +164,10 @@
     var pontuacaoPhoto = 0
     let quantidadeDeQuestoes = listaDeQuestoes.length
 
-    function onloadEsconder() {
-        document.getElementById('jogo').style.display = "none"
-    }
-
     function iniciarQuiz() {
         document.getElementById('jogo').style.display = "flex"
         document.getElementById('btnIniciarQuiz').style.display = "none"
+
 
         document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
 
@@ -213,7 +176,6 @@
         btnSubmeter.disabled = false
         btnProx.disabled = true
         btnConcluir.disabled = true
-        btnTentarNovamente.disabled = true
     }
 
     function preencherHTMLcomQuestaoAtual(index) {
@@ -249,6 +211,7 @@
             habilitarAlternativas(false)
             checarResposta()
         }
+
     }
 
     
@@ -258,6 +221,7 @@
         primeiraOpcao.disabled = opcaoEscolhida
         segundaOpcao.disabled = opcaoEscolhida
         terceiraOpcao.disabled = opcaoEscolhida
+
 
     }
     
@@ -274,9 +238,10 @@
             alert("Atenção... a próxima é a ultima questão!")
             preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
         } else {
-            finalizarJogo()
+            resultadoQuiz()
         }
         limparCoresBackgroundOpcoes()
+
     }
 
     /*function tentarNovamente() {
@@ -304,6 +269,7 @@
         }
         })
 
+
         
     }
 
@@ -313,6 +279,7 @@
             document.getElementById(option.labels[0].id).classList.remove("text-danger-with-bg")
             document.getElementById(option.labels[0].id).classList.remove("text-success-with-bg")
         })
+
     }
 
     function desmarcarRadioButtons() {
@@ -320,51 +287,167 @@
         for (let i = 0; i < options.length; i++) {
             options[i].checked = false;
         }
+
     }
 
-    function finalizarJogo() {
-        let textoParaMensagemFinal = null;
-        let classComCoresParaMensagemFinal = null;
+    function resultadoQuiz() {
+
+        var listaResultado = [];
+        var textoParaMensagemFinal = null;
+        var classComCoresParaMensagemFinal = null;
 
         if (pontuacaoLivro >= pontuacaoScrap && pontuacaoLivro >= pontuacaoPhoto) {
-            textoParaMensagemFinal = `
-            <h2>O Seu modelo ideal é o Livro!</h2><br/>
-            <br/>
-            <img src="./Imagens/img-livro.png" class="img-livro">
-            `
+
+            msgFinal.innerHTML = `
+                    <h2>O Seu modelo ideal é o Livro!</h2>
+                    Uma obra escrita, com ou sem ilustrações, que contém história em forma de texto.
+                    <br/><br/>
+                    <img src="./Imagens/img-livro.png" class="img-livro">
+                    `
             classComCoresParaMensagemFinal = "text-danger-with-bg"
+
+            jogo.innerHTML = "";
+    
+            var idResultadoQuizVar = listaResultado.length+1;
+            var fkUsuarioVar = 1;
+            var fkQuizVar = 1;
+            var tipoEstiloVar = 'Livro';
+
+            fetch("/quiz/resultadoQuiz", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idResultadoQuizServer: idResultadoQuizVar,
+                fkUsuarioServer: fkUsuarioVar,
+                fkQuizServer: fkQuizVar,
+                tipoEstiloServer: tipoEstiloVar
+            }),
+            })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    listaResultado.push('Livro');
+
+
+                } else {
+                throw alert(`Houve um erro ao registrar o resultado do Quiz`);
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+                return false;
+
         }
         else if (pontuacaoScrap >= pontuacaoLivro && pontuacaoScrap >= pontuacaoPhoto) {
             textoParaMensagemFinal = `
-            <h2>O Seu modelo ideal é o Scrapbook!</h2><br/>
-            <br/>
+            <h2>O Seu modelo ideal é o Scrapbook!</h2>
+            Um álbum de memórias que utiliza técnicas de artesanato para personalizar contando história por meio de texto, imagens e arte.
+            <br/><br/>
             <img src="./Imagens/img-scrapbook.png" class="img-scrapbook">
             `
             classComCoresParaMensagemFinal = "text-danger-with-bg"
+
+            jogo.innerHTML = "";
+
+            var idResultadoQuizVar = listaResultado.length+1;
+            var fkUsuarioVar = 1;
+            var fkQuizVar = 1;
+            var tipoEstiloVar = 'Scrapbook';
+
+            fetch("/quiz/resultadoQuiz", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idResultadoQuizServer: idResultadoQuizVar,
+                fkUsuarioServer: fkUsuarioVar,
+                fkQuizServer: fkQuizVar,
+                tipoEstiloServer: tipoEstiloVar
+            }),
+            })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    listaResultado.push('Scrapbook');
+
+
+                } else {
+                throw alert(`Houve um erro ao registrar o resultado do Quiz`);
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+                return false;
+
         }
         else if (pontuacaoPhoto >= pontuacaoScrap && pontuacaoPhoto >= pontuacaoLivro) {
             textoParaMensagemFinal = `
-            <h2>O Seu modelo ideal é o Photobook!</h2><br/>
-            <br/>
+            <h2>O Seu modelo ideal é o Photobook!</h2>
+            Um álbum personalizado onde as histórias são contadas através de fotos impressas diretamente nas páginas.
+            <br/><br/>
             <img src="./Imagens/img-photobook.png" class="img-photobook">
             `
             classComCoresParaMensagemFinal = "text-danger-with-bg"
+
+            jogo.innerHTML = "";
+
+            var idResultadoQuizVar = listaResultado.length+1;
+            var fkUsuarioVar = 1;
+            var fkQuizVar = 1;
+            var tipoEstiloVar = 'Photobook';
+
+            fetch("/quiz/resultadoQuiz", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idResultadoQuizServer: idResultadoQuizVar,
+                fkUsuarioServer: fkUsuarioVar,
+                fkQuizServer: fkQuizVar,
+                tipoEstiloServer: tipoEstiloVar
+            }),
+            })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    listaResultado.push('Photobook');
+
+
+                } else {
+                throw alert(`Houve um erro ao registrar o resultado do Quiz`);
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+                return false;
         }
 
 
         document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
         document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
-        document.getElementById('jogo').classList.add("text-new-gray") 
+        document.getElementById('jogo').style.display = "none"
 
         btnProx.disabled = true
         btnSubmeter.disabled = true
-        btnTentarNovamente.disabled = false
         btnConcluir.disabled = false
 
     }
 
     function finalizar(){
-        document.getElementById('jogo').style.display = "none"
+        window.location.reload()
     }
 
 </script>

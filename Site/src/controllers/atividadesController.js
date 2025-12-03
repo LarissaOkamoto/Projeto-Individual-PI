@@ -2,27 +2,18 @@ var atividadesModel = require("../models/atividadesModel");
 
 function concluirAtividade(req, res) {
     var idAtividade = req.body.idAtividadeServer;
-    /*var nome = req.body.nomeServer;
-    var statusConclusao = req.body.statusConclusaoServer;
-    var fkProjeto = req.body.fkProjetoServer;*/
 
     console.log(`Verificando status da atividade`);
 
     atividadesModel.concluirAtividade(
-        idAtividade,
-        /*nome,
-        statusConclusao, 
-        fkProjeto*/
+        idAtividade
     )
     .then(concluirAtividade => {
     
         const idProjeto = concluirAtividade.insertId;
     
                     return atividadesModel.concluirAtividade(
-                        idAtividade,
-                        /*nome,
-                        statusConclusao,
-                        idProjeto*/
+                        idAtividade
                     );
     })
     

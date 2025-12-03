@@ -30,6 +30,10 @@
             <a href="Atividades.html" class="button_atividades">Atividades</a>
         </li>
         <br/>
+        <li>
+            <a href="Quiz.html" class="button_quiz">Quiz</a>
+        </li>
+        <br/>
         <br/>
         <li>
             <div class="button_sair" onclick="window.location.href='./Index.html';">
@@ -138,7 +142,6 @@
                     <br/>
                     Uma história se concretizando ...
                     <br/>
-                    
                     </div>
                 </div>
                 <div class="grafico">
@@ -206,7 +209,7 @@ fetch(`/atividades/porcentagemPendente/`, { cache: 'no-store' }).then(function (
             if (response.ok) {
                 response.json().then(async function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    debugger
+
                     resposta3 = await resposta;
                 });
             } else {
@@ -223,7 +226,6 @@ fetch(`/atividades/porcentagemPendente/`, { cache: 'no-store' }).then(function (
 
 
 function gerarkpi(porcentagemGeral){
-    debugger
     console.log(porcentagemGeral.geralConcluido)
     porcentagemTotal = (porcentagemGeral.geralConcluido/6)*100;
 

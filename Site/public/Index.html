@@ -8,8 +8,9 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
+<body onload="obterDados()">
     <div class="header"></div>
     <div class="container">
         <ul class="navbar">
@@ -91,7 +92,33 @@
         </div>
         </div>
     </div>
-    
+
+    <hr class="divider">
+            <div class="grafico_kpi">
+                <div class="grafico">
+                    Perfil dos nossos clientes:
+                    <div class="grafico1_2">
+                        <div>
+                        <canvas id="pie" class="grafico1" width="350px" height="350px"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="kpi">
+                <div class="kpi_estilo">
+                    <h3>Estilo mais escolhido pelos nossos clientes:</h3>
+                    <br/>
+                    <div id="div_mensagem_estilo" class ="texto_estilo"></div>
+                    <br/>                        
+                </div>
+                <div class="kpi_quantidade">
+                    <h3>Quantidade de histórias eternizadas pela Umui:</h3>
+                    <br/>
+                    <div id="div_mensagem_quantidade" class ="texto_quantidade"></div>
+                    <br/>   
+                </div>
+                </div>
+            </div>
+
     <hr class="divider">
 
     <div class="como_funciona">
@@ -148,3 +175,149 @@
 
 </body>
 </html>
+
+<script>
+
+    function obterDados(){
+
+var idProjeto = 1;
+
+var resposta1 = ""
+var resposta2 = ""
+var resposta3 = ""
+var resposta4 = ""
+var resposta5 = ""
+
+fetch(`/quiz/perfilLivro/`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(async function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    resposta1 = await resposta
+
+                });
+            } else {
+
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+fetch(`/quiz/perfilScrapbook/`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(async function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    
+                    resposta2 = await resposta
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+
+fetch(`/quiz/perfilPhotobook/`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(async function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    
+                    resposta3 = await resposta
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+        
+        setTimeout(() => plotarGraficoPie(resposta1[0], resposta2[0], resposta3[0]), 2000);
+
+    fetch(`/quiz/perfilEstilo/`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(async function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta4 = await resposta;
+                });
+            } else {
+
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+        setTimeout(() => gerarKpiEstilo(resposta4[0]), 2000);
+
+
+    fetch(`/quiz/quantidadeCliente/`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(async function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta5 = await resposta;
+                });
+            } else {
+
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+        setTimeout(() => gerarKpiQuantidade(resposta5[0]), 2000);
+}
+
+
+function gerarKpiEstilo(perfilEstilo){
+    console.log(perfilEstilo.estilo)
+    var estiloTotal = perfilEstilo.estilo;
+
+    div_mensagem_estilo.innerHTML = `${estiloTotal}`;
+}
+
+function gerarKpiQuantidade(quantidadeCliente){
+    console.log(quantidadeCliente.quantidade)
+
+    var quantidadeTotal = quantidadeCliente.quantidade;
+
+    div_mensagem_quantidade.innerHTML = `${quantidadeTotal}`;
+}
+
+function plotarGraficoPie(perfilLivro, perfilScrapbook, perfilPhotobook){
+
+    console.log(perfilLivro.livro)
+    console.log(perfilScrapbook.scrapbook)
+    console.log(perfilPhotobook.photobook)
+
+  const ctx = document.getElementById('pie');
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Livro','Scrapbook', 'Photobook'],
+      datasets: [{
+        label: 'Perfil dos nossos clientes:',
+        data: [perfilLivro.livro, perfilScrapbook.scrapbook, perfilPhotobook.photobook],
+        backgroundColor: ['rgb(153, 207, 112)', 'rgb(241, 128, 128)', 'rgb(0, 128, 128)'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+} 
+</script>

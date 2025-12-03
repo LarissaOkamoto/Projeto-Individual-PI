@@ -237,6 +237,57 @@ h3{
     padding: 10px 30px 20px 30px;
 }
 
+.grafico_kpi{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: center;
+}
+
+.kpi{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.grafico{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.grafico1{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.metricas{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.kpi_quantidade,
+.kpi_estilo{
+    display: flex;
+    flex-direction: column;
+    background-color: #b99573;
+    border-radius: 14px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 20px 20px 20px;
+    height: 150px;
+    width: 300px;
+    text-align: center;
+}
+
+.texto_estilo,
+.texto_quantidade{
+    font-size: 50px;
+    color: white;
+}
+
 
 /* INÍCIO FOOTER*/
 .divider{
