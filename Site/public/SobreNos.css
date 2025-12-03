@@ -142,6 +142,7 @@ h3{
 .img-sobre_umui{
     display: flex;
     width: 650px;
+    border-radius: 20px;
 }
 
 .fundadora, 

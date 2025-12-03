@@ -344,7 +344,7 @@
 
         }
         else if (pontuacaoScrap >= pontuacaoLivro && pontuacaoScrap >= pontuacaoPhoto) {
-            textoParaMensagemFinal = `
+            msgFinal.innerHTML = `
             <h2>O Seu modelo ideal é o Scrapbook!</h2>
             Um álbum de memórias que utiliza técnicas de artesanato para personalizar contando história por meio de texto, imagens e arte.
             <br/><br/>
@@ -390,7 +390,7 @@
 
         }
         else if (pontuacaoPhoto >= pontuacaoScrap && pontuacaoPhoto >= pontuacaoLivro) {
-            textoParaMensagemFinal = `
+            msgFinal.innerHTML = `
             <h2>O Seu modelo ideal é o Photobook!</h2>
             Um álbum personalizado onde as histórias são contadas através de fotos impressas diretamente nas páginas.
             <br/><br/>

@@ -113,6 +113,15 @@ h3{
     width: 1155px;
 }
 
+.img-projeto_batian{
+    display: flex;
+    height: 340px;
+    border: solid;
+    border-color:#b99573;
+    border-width: 5px;
+    border-radius: 14px;
+}
+
 .divider{
     border: none; 
     border-top: 1px solid #b99573;
@@ -155,7 +164,8 @@ h3{
 
 .continuar_projeto{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 30px;
 }
 
 .body_atividades{
@@ -169,7 +179,7 @@ h3{
 .atividades_4a6{
     display: flex;
     flex-direction: row;
-    gap: 40px;
+    gap: 60px;
     text-decoration: none;
     color: white;
 }
@@ -209,20 +219,6 @@ h3{
     font-size: 16px;
 }
 
-.button_novo_projeto{
-    display: flex;
-    width: 200px;
-    height: 50px;
-    color:white;
-    background-color: #b99573;
-    border-radius: 14px;
-    border-style: solid;
-    border-color:#b99573;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-}
-
 .dados_andamento{
     display: flex;
     flex-direction: column;
@@ -238,46 +234,5 @@ h3{
     width: 200px;
 }
 
-.metricas_grafico{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
-
-.grafico{
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-}
-
-.grafico1_2{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
-
-.metricas{
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-}
-
-.kpi_andamento{
-    display: flex;
-    flex-direction: column;
-    background-color: #b99573;
-    border-radius: 14px;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 20px 20px 20px;
-    height: 300px;
-    width: 150px;
-    text-align: center;
-}
-
-.texto_porcentagem{
-    font-size: 50px;
-    color: white;
-}
 
 /* FIM DASHBOARD*/
