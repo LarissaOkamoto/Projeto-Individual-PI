@@ -50,7 +50,7 @@ function perfilEstilo(tipoEstilo) {
     console.log("ACESSEI A ATIVIDADE MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function resultadoQuiz():", tipoEstilo);
 
     var instrucaoSql = `
-    SELECT tipoEstilo as estilo FROM resultadoQuiz GROUP BY (tipoEstilo) ORDER BY (SELECT COUNT(tipoEstilo) FROM resultadoQuiz) DESC LIMIT 1;
+    SELECT tipoEstilo as estilo FROM resultadoQuiz GROUP BY tipoEstilo ORDER BY COUNT(*) DESC LIMIT 1;
     `
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
